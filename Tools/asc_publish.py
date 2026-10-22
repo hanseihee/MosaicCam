@@ -217,20 +217,37 @@ def cmd_metadata():
 def cmd_pricing():
     """앱 값 무료, 판매 지역 확인"""
     a = app()
-    points = call("GET", f"/v1/apps/{a['id']}/appPricePoints", params={"filter[territory]": "KOR", "limit": 5})["data"]
-    free = next((p for p in points if float(p["attributes"]["customerPrice"]) == 0), None)
-    if free is None:
-        sys.exit("무료 가격 구간을 못 찾았어요")
-    call("POST", "/v1/appPriceSchedules", {"data": {"type": "appPriceSchedules", "relationships": {
-        "app": {"data": {"type": "apps", "id": a["id"]}},
-        "baseTerritory": {"data": {"type": "territories", "id": "KOR"}},
-        "manualPrices": {"data": [{"type": "appPrices", "id": "${p0}"}]}}},
-        "included": [{"type": "appPrices", "id": "${p0}", "attributes": {"startDate": None},
-                      "relationships": {"appPricePoint": {"data": {"type": "appPricePoints", "id": free["id"]}}}}]})
-    print("앱 값: 무료")
-    avail = call("GET", f"/v1/apps/{a['id']}/appAvailabilityV2", params={"include": "territoryAvailabilities", "limit[territoryAvailabilities]": 50})
-    n = sum(1 for t in avail.get("included", []) if t["attributes"].get("available"))
-    print("판매 지역:", n, "곳", "(새 지역 자동 포함)" if avail["data"]["attributes"].get("availableInNewTerritories") else "")
+    if call("GET", f"/v1/apps/{a['id']}/appPriceSchedule").get("data"):
+        print("앱 값: 이미 설정됨")
+        points = []
+    else:
+        points = call("GET", f"/v1/apps/{a['id']}/appPricePoints", params={"filter[territory]": "KOR", "limit": 5})["data"]
+    if points:
+        free = next((p for p in points if float(p["attributes"]["customerPrice"]) == 0), None)
+        if free is None:
+            sys.exit("무료 가격 구간을 못 찾았어요")
+        call("POST", "/v1/appPriceSchedules", {"data": {"type": "appPriceSchedules", "relationships": {
+            "app": {"data": {"type": "apps", "id": a["id"]}},
+            "baseTerritory": {"data": {"type": "territories", "id": "KOR"}},
+            "manualPrices": {"data": [{"type": "appPrices", "id": "${p0}"}]}}},
+            "included": [{"type": "appPrices", "id": "${p0}", "attributes": {"startDate": None},
+                          "relationships": {"appPricePoint": {"data": {"type": "appPricePoints", "id": free["id"]}}}}]})
+        print("앱 값: 무료")
+    try:
+        avail = call("GET", f"/v1/apps/{a['id']}/appAvailabilityV2", params={"include": "territoryAvailabilities", "limit[territoryAvailabilities]": 50})
+    except SystemExit:
+        avail = None
+    if avail is None:
+        territories = [t["id"] for t in get_all("/v1/territories")]
+        call("POST", "/v2/appAvailabilities", {"data": {"type": "appAvailabilities", "attributes": {"availableInNewTerritories": True},
+            "relationships": {"app": {"data": {"type": "apps", "id": a["id"]}},
+                              "territoryAvailabilities": {"data": [{"type": "territoryAvailabilities", "id": f"${{t{i}}}"} for i in range(len(territories))]}}},
+            "included": [{"type": "territoryAvailabilities", "id": f"${{t{i}}}", "attributes": {"available": True},
+                          "relationships": {"territory": {"data": {"type": "territories", "id": t}}}} for i, t in enumerate(territories)]})
+        print("판매 지역: 전체", len(territories), "곳 (새 지역 자동 포함)")
+    else:
+        n = sum(1 for t in avail.get("included", []) if t["attributes"].get("available"))
+        print("판매 지역 설정돼 있음 (처음 50곳 중", n, "곳)")
 
 
 def cmd_screenshots():
