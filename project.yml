@@ -17,7 +17,7 @@ settings:
     SWIFT_VERSION: "5.0"
     CODE_SIGN_STYLE: Automatic
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "4"
+    CURRENT_PROJECT_VERSION: "5"
 targets:
   MosaicCam:
     type: application
@@ -111,6 +111,13 @@ targets:
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    postBuildScripts:
+      - name: onnxruntime 스텁 프레임워크 제거
+        # Xcode 27이 정적 xcframework(onnxruntime)를 빈 동적 스텁으로 포장해 Frameworks에 넣는다.
+        # 앱은 onnxruntime을 정적으로 링크하므로(otool -L에 없음) 스텁은 필요 없고, 남겨 두면 App Store 처리에서 빌드가 거절된다.
+        script: |
+          rm -rf "${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/onnxruntime.framework"
+        basedOnDependencyAnalysis: false
     scheme:
       storeKitConfiguration: MosaicCam/Products.storekit   # 시뮬레이터·실기기 시험 결제
       testTargets:
