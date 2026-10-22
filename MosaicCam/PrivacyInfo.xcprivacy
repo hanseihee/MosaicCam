@@ -22,6 +22,15 @@
 			</array>
 		</dict>
 		<dict>
+			<!-- 저장 전 남은 공간 확인(시스템 프레임워크가 내부적으로 씀) -->
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>E174.1</string>
+			</array>
+		</dict>
+		<dict>
 			<!-- 앱 컨테이너 안 파일(모델·로그·임시 사진) 시간 정보 -->
 			<key>NSPrivacyAccessedAPIType</key>
 			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
