@@ -1,0 +1,62 @@
+{
+  "identifier": "9D2C4A6E",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "3000",
+      "familyShareable": false,
+      "internalID": "3F7A1C2D",
+      "localizations": [
+        {
+          "description": "저장할 때 나오는 광고를 없애요. 한 번 사면 계속 쓸 수 있어요.",
+          "displayName": "광고 제거",
+          "locale": "ko_KR"
+        },
+        {
+          "description": "Removes the ad shown when you save. Buy once, keep forever.",
+          "displayName": "Remove Ads",
+          "locale": "en_US"
+        },
+        {
+          "description": "保存のときに出る広告をなくします。一度買えばずっと使えます。",
+          "displayName": "広告をなくす",
+          "locale": "ja_JP"
+        },
+        {
+          "description": "去掉保存时显示的广告。购买一次，长期有效。",
+          "displayName": "去除广告",
+          "locale": "zh_CN"
+        },
+        {
+          "description": "Entfernt die Werbung beim Speichern. Einmal kaufen, dauerhaft nutzen.",
+          "displayName": "Werbung entfernen",
+          "locale": "de_DE"
+        },
+        {
+          "description": "Supprime la pub affichée à l’enregistrement. Achat unique.",
+          "displayName": "Supprimer les pubs",
+          "locale": "fr_FR"
+        },
+        {
+          "description": "Quita el anuncio que aparece al guardar. Cómpralo una vez.",
+          "displayName": "Quitar anuncios",
+          "locale": "es_ES"
+        }
+      ],
+      "productID": "realmasse.mosaiccam.removeads",
+      "referenceName": "광고 제거",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_developerTeamID": "RT556U3WKT",
+    "_failTransactionsEnabled": false,
+    "_locale": "ko_KR",
+    "_storefront": "KOR"
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

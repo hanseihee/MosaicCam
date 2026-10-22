@@ -4,6 +4,8 @@ import SwiftUI
 @main
 struct MosaicCamApp: App {
     init() {
+        Purchases.shared.start()
+        AdManager.shared.start()
         // 첫 사진에서 기다리지 않게 모델을 미리 올린다
         Task.detached(priority: .utility) {
             let start = ContinuousClock.now

@@ -8,57 +8,66 @@ struct HomeView: View {
     @State private var captured: UIImage?
     @State private var loading = false
     @State private var message: String?
+    @State private var showRemoveAds = false
+    private let purchases = Purchases.shared
 
     private let cameraAvailable = UIImagePickerController.isSourceTypeAvailable(.camera)
 
     var body: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            VStack(spacing: 18) {
-                MosaicGlyph()
-                    .frame(width: 96, height: 96)
-                Text("모자이크")
-                    .font(.largeTitle.bold())
-                Text("사진 속 번호판과 얼굴을 찾아 드려요.\n가릴 곳을 탭하면 모자이크돼요.")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            Spacer()
+        ZStack {
+            BlurredPhotoBackground()
 
-            VStack(spacing: 12) {
-                Button {
-                    showCamera = true
-                } label: {
-                    Label("사진 찍기", systemImage: "camera.fill")
-                        .frame(maxWidth: .infinity, minHeight: 34)
+            VStack(spacing: 0) {
+                Text(verbatim: "Mosaic")
+                    .font(Theme.wordmark)
+                    .foregroundStyle(.white.opacity(0.92))
+                    .padding(.top, 12)
+
+                VStack(spacing: 14) {
+                    // 굵은 줄은 번역문 안의 마크다운(**…**)으로 정한다
+                    Text("**번호판과 얼굴을**\n찾아서 가려 드려요")
+                        .font(Theme.headlineLight)
+                        .foregroundStyle(.white)
+                    Text("가릴 곳을 탭하면 모자이크돼요")
+                        .font(.callout)
+                        .foregroundStyle(Theme.mist)
                 }
-                .buttonStyle(.borderedProminent)
-                .foregroundStyle(.black)
-                .disabled(!cameraAvailable)
+                .multilineTextAlignment(.center)
+                .padding(.top, 44)
 
-                PhotosPicker(selection: $pickerItem, matching: .images) {
-                    Label("앨범에서 고르기", systemImage: "photo.on.rectangle")
-                        .frame(maxWidth: .infinity, minHeight: 34)
-                }
-                .buttonStyle(.bordered)
+                VStack(spacing: 12) {
+                    Button {
+                        showCamera = true
+                    } label: {
+                        Label("사진 찍기", systemImage: "camera.fill")
+                    }
+                    .buttonStyle(.glassPill(prominent: true))
+                    .disabled(!cameraAvailable)
 
-                Group {
-                    if loading {
-                        ProgressView()
-                    } else if let message {
-                        Text(message).foregroundStyle(.orange)
-                    } else {
-                        Text(cameraAvailable ? "사진은 이 기기 안에서만 처리돼요." : "이 기기에는 카메라가 없어요.")
-                            .foregroundStyle(.tertiary)
+                    PhotosPicker(selection: $pickerItem, matching: .images) {
+                        Label("앨범에서 고르기", systemImage: "photo.on.rectangle")
+                    }
+                    .buttonStyle(.glassPill)
+
+                    TextDivider("이 기기 안에서만")
+                        .padding(.vertical, 10)
+
+                    HStack(spacing: 12) {
+                        GlassChip("서버로 안 보내요", systemImage: "lock.fill")
+                        GlassChip("원본은 그대로예요", systemImage: "photo.badge.checkmark")
                     }
                 }
-                .font(.footnote)
-                .frame(height: 24)
+                .padding(.top, 40)
+
+                Spacer(minLength: 24)
+
+                footer
+                    .font(.footnote)
+                    .multilineTextAlignment(.center)
+                    .frame(minHeight: 24)
+                    .padding(.bottom, 8)
             }
-            .controlSize(.large)
-            .padding(.horizontal, 24)
-            .padding(.bottom, 12)
+            .padding(.horizontal, Theme.gutter)
         }
         .fullScreenCover(isPresented: $showCamera, onDismiss: openCaptured) {
             CameraPicker { image in
@@ -69,6 +78,9 @@ struct HomeView: View {
         }
         .fullScreenCover(item: $editor) { model in
             EditorView(model: model)
+        }
+        .sheet(isPresented: $showRemoveAds) {
+            RemoveAdsView()
         }
         .onChange(of: pickerItem) { _, item in
             guard let item else { return }
@@ -89,6 +101,31 @@ struct HomeView: View {
         }
     }
 
+    /// 맨 아래 한 줄: 여는 중 / 오류 / 안내
+    @ViewBuilder
+    private var footer: some View {
+        if loading {
+            HStack(spacing: 8) {
+                ProgressView().controlSize(.small).tint(.white)
+                Text("사진을 여는 중…")
+            }
+            .foregroundStyle(Theme.mist)
+        } else if let message {
+            Text(message).foregroundStyle(Theme.ember)
+        } else if !cameraAvailable {
+            Text("이 기기에는 카메라가 없어요").foregroundStyle(Theme.mist)
+        } else if purchases.adsRemoved {
+            Text("광고 없이 쓰고 있어요").foregroundStyle(Theme.mist)
+        } else {
+            HStack(spacing: 6) {
+                Text("저장할 때 광고가 나와요").foregroundStyle(Theme.mist)
+                Button("광고 없이 쓰기") { showRemoveAds = true }
+                    .foregroundStyle(Theme.ember)
+                    .fontWeight(.medium)
+            }
+        }
+    }
+
     private func openCaptured() {
         guard let image = captured else { return }
         captured = nil
@@ -104,70 +141,23 @@ struct HomeView: View {
         }
         do {
             guard let data = try await item.loadTransferable(type: Data.self), let image = UIImage(data: data) else {
-                message = "사진을 열지 못했어요."
+                message = String(localized: "사진을 열지 못했어요.")
                 return
             }
             open(image)
         } catch {
-            message = "사진을 열지 못했어요: \(error.localizedDescription)"
+            message = String(localized: "사진을 열지 못했어요: \(error.localizedDescription)")
         }
     }
 
     private func open(_ image: UIImage) {
         guard let cg = image.normalizedCGImage() else {
-            message = "사진을 열지 못했어요."
+            message = String(localized: "사진을 열지 못했어요.")
             return
         }
         #if DEBUG
         debugLog("사진 열기 \(Int(image.size.width))×\(Int(image.size.height))pt ×\(image.scale) 방향 \(image.imageOrientation.rawValue) → \(cg.width)×\(cg.height)")
         #endif
         editor = EditorModel(image: cg)
-    }
-}
-
-/// 앱 상징: 모자이크 칸 위에 인식 상자 모서리
-struct MosaicGlyph: View {
-    private let shades: [Double] = [0.55, 0.35, 0.7, 0.45, 0.3, 0.6, 0.4, 0.75, 0.5]
-
-    var body: some View {
-        GeometryReader { geo in
-            let side = geo.size.width
-            let cell = side * 0.6 / 3
-            ZStack {
-                VStack(spacing: 0) {
-                    ForEach(0..<3, id: \.self) { row in
-                        HStack(spacing: 0) {
-                            ForEach(0..<3, id: \.self) { col in
-                                Rectangle().fill(Color.accentColor.opacity(shades[row * 3 + col]))
-                            }
-                        }
-                    }
-                }
-                .frame(width: cell * 3, height: cell * 3)
-                .clipShape(RoundedRectangle(cornerRadius: side * 0.06))
-                CornerBrackets()
-                    .stroke(Color.accentColor, style: StrokeStyle(lineWidth: side * 0.05, lineCap: .round))
-                    .padding(side * 0.06)
-            }
-            .frame(width: side, height: side)
-        }
-        .aspectRatio(1, contentMode: .fit)
-        .accessibilityHidden(true)
-    }
-}
-
-struct CornerBrackets: Shape {
-    func path(in rect: CGRect) -> Path {
-        let l = rect.width * 0.22
-        var p = Path()
-        for (corner, dx, dy) in [(CGPoint(x: rect.minX, y: rect.minY), 1.0, 1.0),
-                                 (CGPoint(x: rect.maxX, y: rect.minY), -1.0, 1.0),
-                                 (CGPoint(x: rect.minX, y: rect.maxY), 1.0, -1.0),
-                                 (CGPoint(x: rect.maxX, y: rect.maxY), -1.0, -1.0)] {
-            p.move(to: CGPoint(x: corner.x + l * dx, y: corner.y))
-            p.addLine(to: corner)
-            p.addLine(to: CGPoint(x: corner.x, y: corner.y + l * dy))
-        }
-        return p
     }
 }

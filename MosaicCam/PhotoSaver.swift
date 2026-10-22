@@ -9,8 +9,8 @@ enum PhotoSaver {
 
         var errorDescription: String? {
             switch self {
-            case .encode: "사진을 만들지 못했어요."
-            case .denied: "설정에서 사진 추가 권한을 허용해 주세요."
+            case .encode: String(localized: "사진을 만들지 못했어요.")
+            case .denied: String(localized: "설정에서 사진 추가 권한을 허용해 주세요.")
             }
         }
     }

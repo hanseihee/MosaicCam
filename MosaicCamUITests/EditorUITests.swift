@@ -15,6 +15,8 @@ final class EditorUITests: XCTestCase {
         let app = XCUIApplication()
         // 독일 번호판 하나만 있는 사진
         app.launchEnvironment["MOSAIC_DEMO_IMAGE"] = samples.appendingPathComponent("world6.jpg").path
+        // 문구를 한국어로 고정 (앱이 여러 언어를 지원한다)
+        app.launchArguments += ["-AppleLanguages", "(ko)", "-AppleLocale", "ko_KR"]
         app.launch()
 
         let plate = app.buttons["번호판"]

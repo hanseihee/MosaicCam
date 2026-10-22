@@ -44,7 +44,7 @@ struct EditorView: View {
             GeometryReader { geo in
                 let fit = FitLayout(image: model.imageSize, in: geo.size)
                 ZStack(alignment: .topLeading) {
-                    Color.black
+                    Color.clear
                     Image(decorative: model.preview, scale: 1)
                         .resizable()
                         .frame(width: fit.frame.width, height: fit.frame.height)
@@ -68,14 +68,22 @@ struct EditorView: View {
                 }
             }
             .ignoresSafeArea(edges: .horizontal)
-            .safeAreaInset(edge: .top, spacing: 0) { status }
+            .safeAreaInset(edge: .top, spacing: 0) {
+                VStack(spacing: 0) {
+                    topBar
+                    status
+                }
+            }
             .safeAreaInset(edge: .bottom, spacing: 0) { bottomBar }
             .overlay(alignment: .bottom) { toastView }
-            .background(Color.black)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { toolbar }
+            // 홈과 같은 바탕을 옅게 깔아 유리 부품에 빛이 비치게
+            .background { BlurredPhotoBackground(strength: 0.45) }
+            .toolbar(.hidden, for: .navigationBar)
         }
-        .task { await model.detect() }
+        .task {
+            Task { await AdManager.shared.preload() }
+            await model.detect()
+        }
         .sheet(item: $shareItem) { item in
             ActivityView(items: [item.url])
                 .presentationDetents([.medium, .large])
@@ -94,7 +102,7 @@ struct EditorView: View {
                 .frame(width: w, height: h)
                 .accessibilityElement()
                 .accessibilityLabel(RegionBox.name(region.kind))
-                .accessibilityValue(model.isMasked(region) ? "가림" : "안 가림")
+                .accessibilityValue(model.isMasked(region) ? String(localized: "가림") : String(localized: "안 가림"))
                 .accessibilityAddTraits(.isButton)
                 .accessibilityAction { model.toggle(region) }
                 .position(x: r.midX, y: r.midY)
@@ -129,25 +137,28 @@ struct EditorView: View {
         HStack(spacing: 8) {
             switch model.phase {
             case .detecting:
-                ProgressView().controlSize(.small)
+                ProgressView().controlSize(.small).tint(.white)
                 Text("번호판과 얼굴을 찾는 중…")
             case .failed(let reason):
-                Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+                Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(Theme.ember)
                 Text("찾지 못했어요: \(reason)").lineLimit(2)
             case .ready where drawing:
-                Image(systemName: "hand.draw").foregroundStyle(Color.accentColor)
+                Image(systemName: "hand.draw").foregroundStyle(Theme.ember)
                 Text("끌어서 가릴 곳을 그리세요")
             case .ready where model.regions.isEmpty:
                 Text("찾은 곳이 없어요. 직접 그려서 가릴 수 있어요.")
             case .ready:
                 summary
-                Text("· 탭해서 가리기").foregroundStyle(.secondary)
+                Text("탭해서 가리기").foregroundStyle(Theme.mist)
             }
         }
         .font(.subheadline)
+        .foregroundStyle(.white)
+        .multilineTextAlignment(.center)
         .padding(.horizontal, 14)
         .padding(.vertical, 8)
-        .background(.ultraThinMaterial, in: Capsule())
+        .glassPillBackground()
+        .padding(.horizontal, Theme.gutter)
         .padding(.vertical, 8)
     }
 
@@ -167,7 +178,7 @@ struct EditorView: View {
     }
 
     private var bottomBar: some View {
-        HStack {
+        HStack(spacing: 4) {
             BarButton(title: "되돌리기", systemImage: "arrow.uturn.backward") {
                 model.undo()
             }
@@ -184,26 +195,42 @@ struct EditorView: View {
             }
         }
         .disabled(model.phase == .detecting || busy)
-        .padding(.horizontal, 12)
+        .padding(6)
+        .glassPillBackground()
+        .padding(.horizontal, Theme.gutter)
         .padding(.top, 10)
-        .background(.bar)
+        .padding(.bottom, 8)
     }
 
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
+    private var topBar: some View {
+        HStack(spacing: 8) {
             Button("닫기", systemImage: "xmark") { dismiss() }
-        }
-        ToolbarItemGroup(placement: .topBarTrailing) {
-            Button(showBoxes ? "상자 숨기기" : "상자 보기", systemImage: showBoxes ? "eye" : "eye.slash") {
+                .buttonStyle(.glassCircle)
+            Spacer(minLength: 8)
+            // 삼항식은 String으로 잡혀 번역되지 않으므로 LocalizedStringKey로 못 박는다
+            Button((showBoxes ? "상자 숨기기" : "상자 보기") as LocalizedStringKey, systemImage: showBoxes ? "eye" : "eye.slash") {
                 showBoxes.toggle()
             }
+            .buttonStyle(.glassCircle)
             Button("공유", systemImage: "square.and.arrow.up") { share() }
+                .buttonStyle(.glassCircle)
                 .disabled(busy)
-            Button("저장") { Task { await save() } }
-                .fontWeight(.semibold)
-                .disabled(busy)
+            Button {
+                Task { await save() }
+            } label: {
+                Text("저장")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(Theme.ink)
+                    .padding(.horizontal, 18)
+                    .frame(height: 44)
+                    .glassPillBackground(prominent: true)
+            }
+            .buttonStyle(.plain)
+            .disabled(busy)
+            .opacity(busy ? 0.35 : 1)
         }
+        .padding(.horizontal, Theme.gutter)
+        .padding(.vertical, 8)
     }
 
     @ViewBuilder
@@ -211,9 +238,10 @@ struct EditorView: View {
         if let toast {
             Text(toast)
                 .font(.subheadline.weight(.medium))
+                .foregroundStyle(.white)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
-                .background(.ultraThinMaterial, in: Capsule())
+                .glassPillBackground()
                 .padding(.bottom, 96)
                 .transition(.opacity)
         }
@@ -224,6 +252,8 @@ struct EditorView: View {
     private func save() async {
         busy = true
         defer { busy = false }
+        // 광고 제거를 안 샀으면 전면 광고를 먼저 보여 주고, 닫히면 저장한다
+        await AdManager.shared.showInterstitial()
         do {
             guard let image = model.renderFull() else { throw PhotoSaver.SaveError.encode }
             let jpeg = try PhotoSaver.jpeg(image)
@@ -231,7 +261,7 @@ struct EditorView: View {
             #if DEBUG
             debugLog("저장 완료 \(image.width)×\(image.height) · \(jpeg.count / 1024)KB")
             #endif
-            show("사진 앱에 저장했어요")
+            show(String(localized: "사진 앱에 저장했어요"))
         } catch {
             #if DEBUG
             debugLog("저장 실패 \(error)")
@@ -267,17 +297,17 @@ struct RegionBox: View {
 
     static func name(_ kind: Region.Kind) -> String {
         switch kind {
-        case .plate: "번호판"
-        case .face: "얼굴"
-        case .manual: "직접 그린 곳"
+        case .plate: String(localized: "번호판")
+        case .face: String(localized: "얼굴")
+        case .manual: String(localized: "직접 그린 곳")
         }
     }
 
     static func color(_ kind: Region.Kind) -> Color {
         switch kind {
-        case .plate: Color(red: 1, green: 0.84, blue: 0.04)
-        case .face: Color(red: 0.35, green: 0.82, blue: 1)
-        case .manual: .white
+        case .plate: Theme.plateBox
+        case .face: Theme.faceBox
+        case .manual: Theme.manualBox
         }
     }
 
@@ -294,7 +324,9 @@ struct RegionBox: View {
 }
 
 private struct BarButton: View {
-    let title: String
+    @Environment(\.isEnabled) private var isEnabled
+
+    let title: LocalizedStringKey
     let systemImage: String
     var active = false
     let action: () -> Void
@@ -308,9 +340,15 @@ private struct BarButton: View {
                 Text(title).font(.caption)
             }
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 6)
-            .foregroundStyle(active ? Color.black : Color.primary)
-            .background(active ? Color.accentColor : .clear, in: RoundedRectangle(cornerRadius: 10))
+            .frame(minHeight: Theme.controlHeight)
+            .foregroundStyle(active ? Theme.ink : .white)
+            .background {
+                if active {
+                    GlassPill(prominent: true)
+                }
+            }
+            .contentShape(Capsule())
+            .opacity(isEnabled ? 1 : 0.35)
         }
         .buttonStyle(.plain)
     }
