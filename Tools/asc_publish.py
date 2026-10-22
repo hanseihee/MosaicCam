@@ -105,11 +105,20 @@ def app():
     return found[0]
 
 
+EDITABLE_STATES = ("PREPARE_FOR_SUBMISSION", "DEVELOPER_REJECTED", "REJECTED", "METADATA_REJECTED", "INVALID_BINARY")
+
+
 def version(app_id):
-    found = call("GET", f"/v1/apps/{app_id}/appStoreVersions",
-                 params={"filter[platform]": "IOS", "filter[versionString]": VERSION})["data"]
-    if found:
-        return found[0]
+    """편집할 수 있는 iOS 버전. 앱을 만들 때 생긴 '1.0'은 아카이브와 맞게 '1.0.0'으로 바꾼다"""
+    versions = call("GET", f"/v1/apps/{app_id}/appStoreVersions", params={"filter[platform]": "IOS"})["data"]
+    editable = [v for v in versions if v["attributes"]["appStoreState"] in EDITABLE_STATES]
+    if editable:
+        v = editable[0]
+        if v["attributes"]["versionString"] != VERSION:
+            print(f"버전 {v['attributes']['versionString']} → {VERSION}")
+            v = call("PATCH", f"/v1/appStoreVersions/{v['id']}", {"data": {"type": "appStoreVersions", "id": v["id"],
+                     "attributes": {"versionString": VERSION, "releaseType": "AFTER_APPROVAL"}}})["data"]
+        return v
     print(f"버전 {VERSION} 만드는 중")
     return call("POST", "/v1/appStoreVersions", {"data": {
         "type": "appStoreVersions",
@@ -144,7 +153,7 @@ def cmd_info():
     print("앱:", a["id"], a["attributes"]["name"], a["attributes"]["bundleId"])
     for v in call("GET", f"/v1/apps/{a['id']}/appStoreVersions")["data"]:
         print("버전:", v["attributes"]["versionString"], v["attributes"]["appStoreState"])
-    for b in call("GET", f"/v1/apps/{a['id']}/builds", params={"sort": "-uploadedDate", "limit": 5})["data"]:
+    for b in call("GET", "/v1/builds", params={"filter[app]": a["id"], "sort": "-uploadedDate", "limit": 5})["data"]:
         print("빌드:", b["attributes"]["version"], b["attributes"]["processingState"], b["attributes"]["uploadedDate"])
     for p in call("GET", f"/v1/apps/{a['id']}/inAppPurchasesV2")["data"]:
         print("인앱:", p["attributes"]["productId"], p["attributes"]["state"])
@@ -163,29 +172,65 @@ def cmd_metadata():
         "secondaryCategory": {"data": {"type": "appCategories", "id": COMMON["secondaryCategory"]}}}}})
     print("연령 등급(해당 없음)")
     rating = call("GET", f"/v1/appInfos/{info['id']}/ageRatingDeclaration")["data"]
-    none_keys = ["alcoholTobaccoOrDrugUseOrReferences", "contests", "gamblingSimulated", "horrorOrFearThemes",
-                 "matureOrSuggestiveThemes", "medicalOrTreatmentInformation", "profanityOrCrudeHumor",
+    none_keys = ["alcoholTobaccoOrDrugUseOrReferences", "contests", "gamblingSimulated", "gunsOrOtherWeapons",
+                 "horrorOrFearThemes", "matureOrSuggestiveThemes", "medicalOrTreatmentInformation", "profanityOrCrudeHumor",
                  "sexualContentGraphicAndNudity", "sexualContentOrNudity", "violenceCartoonOrFantasy",
                  "violenceRealistic", "violenceRealisticProlongedGraphicOrSadistic"]
+    false_keys = ["gambling", "unrestrictedWebAccess", "lootBox", "healthOrWellnessTopics", "messagingAndChat",
+                  "parentalControls", "ageAssurance", "socialMedia", "socialMediaAgeRestricted", "userGeneratedContent"]
     call("PATCH", f"/v1/ageRatingDeclarations/{rating['id']}", {"data": {"type": "ageRatingDeclarations", "id": rating["id"], "attributes": {
-        **{k: "NONE" for k in none_keys}, "gambling": False, "unrestrictedWebAccess": False,
-        "kidsAgeBand": None, "lootBox": False, "advertising": True}}})  # 광고 포함 표시
+        **{k: "NONE" for k in none_keys}, **{k: False for k in false_keys},
+        "kidsAgeBand": None, "advertising": True}}})  # 광고 포함 표시
     print("콘텐츠 권한(제3자 콘텐츠 없음)")
     call("PATCH", f"/v1/apps/{a['id']}", {"data": {"type": "apps", "id": a["id"], "attributes": {"contentRightsDeclaration": "DOES_NOT_USE_THIRD_PARTY_CONTENT"}}})
     v = version(a["id"])
-    print("버전 문구(설명·키워드·새로운 기능·지원 주소)")
+    # '새로운 기능'은 한 번이라도 출시된 뒤에만 쓸 수 있다
+    released = any(x["attributes"]["appStoreState"] in ("READY_FOR_SALE", "READY_FOR_DISTRIBUTION", "PROCESSING_FOR_DISTRIBUTION")
+                   for x in call("GET", f"/v1/apps/{a['id']}/appStoreVersions", params={"filter[platform]": "IOS"})["data"])
+    print("버전 문구(설명·키워드·지원 주소" + ("·새로운 기능" if released else "") + ")")
     upsert_localizations(f"/v1/appStoreVersions/{v['id']}/appStoreVersionLocalizations", "appStoreVersionLocalizations", "appStoreVersions", v["id"],
-                         {loc: {"description": m["description"], "keywords": m["keywords"], "whatsNew": m["whatsNew"],
-                                "supportUrl": COMMON["supportUrl"]} for loc, m in LOCALES.items()}, "appStoreVersion")
-    print("심사 메모·연락처")
+                         {loc: {"description": m["description"], "keywords": m["keywords"], "supportUrl": COMMON["supportUrl"],
+                                **({"whatsNew": m["whatsNew"]} if released else {})} for loc, m in LOCALES.items()}, "appStoreVersion")
+    print("저작권")
+    call("PATCH", f"/v1/appStoreVersions/{v['id']}", {"data": {"type": "appStoreVersions", "id": v["id"], "attributes": {"copyright": COMMON["copyright"]}}})
+    print("심사 메모·연락처 (같은 계정의 다른 앱에 적힌 연락처를 그대로 쓴다)")
     detail = call("GET", f"/v1/appStoreVersions/{v['id']}/appStoreReviewDetail").get("data")
     attrs = {"notes": COMMON["reviewNotes"], "demoAccountRequired": False}
+    for other in call("GET", "/v1/apps", params={"limit": 50})["data"]:
+        if other["id"] == a["id"]:
+            continue
+        for ov in call("GET", f"/v1/apps/{other['id']}/appStoreVersions", params={"limit": 3})["data"]:
+            od = call("GET", f"/v1/appStoreVersions/{ov['id']}/appStoreReviewDetail").get("data")
+            if od and od["attributes"].get("contactEmail"):
+                attrs.update({k: od["attributes"][k] for k in ("contactFirstName", "contactLastName", "contactPhone", "contactEmail")})
+                break
+        if "contactEmail" in attrs:
+            break
     if detail:
         call("PATCH", f"/v1/appStoreReviewDetails/{detail['id']}", {"data": {"type": "appStoreReviewDetails", "id": detail["id"], "attributes": attrs}})
     else:
         call("POST", "/v1/appStoreReviewDetails", {"data": {"type": "appStoreReviewDetails", "attributes": attrs,
              "relationships": {"appStoreVersion": {"data": {"type": "appStoreVersions", "id": v["id"]}}}}})
     print("완료")
+
+
+def cmd_pricing():
+    """앱 값 무료, 판매 지역 확인"""
+    a = app()
+    points = call("GET", f"/v1/apps/{a['id']}/appPricePoints", params={"filter[territory]": "KOR", "limit": 5})["data"]
+    free = next((p for p in points if float(p["attributes"]["customerPrice"]) == 0), None)
+    if free is None:
+        sys.exit("무료 가격 구간을 못 찾았어요")
+    call("POST", "/v1/appPriceSchedules", {"data": {"type": "appPriceSchedules", "relationships": {
+        "app": {"data": {"type": "apps", "id": a["id"]}},
+        "baseTerritory": {"data": {"type": "territories", "id": "KOR"}},
+        "manualPrices": {"data": [{"type": "appPrices", "id": "${p0}"}]}}},
+        "included": [{"type": "appPrices", "id": "${p0}", "attributes": {"startDate": None},
+                      "relationships": {"appPricePoint": {"data": {"type": "appPricePoints", "id": free["id"]}}}}]})
+    print("앱 값: 무료")
+    avail = call("GET", f"/v1/apps/{a['id']}/appAvailabilityV2", params={"include": "territoryAvailabilities", "limit[territoryAvailabilities]": 50})
+    n = sum(1 for t in avail.get("included", []) if t["attributes"].get("available"))
+    print("판매 지역:", n, "곳", "(새 지역 자동 포함)" if avail["data"]["attributes"].get("availableInNewTerritories") else "")
 
 
 def cmd_screenshots():
@@ -237,8 +282,8 @@ def cmd_iap():
     call("POST", "/v1/inAppPurchasePriceSchedules", {"data": {"type": "inAppPurchasePriceSchedules", "relationships": {
         "inAppPurchase": {"data": {"type": "inAppPurchases", "id": iap["id"]}},
         "baseTerritory": {"data": {"type": "territories", "id": "KOR"}},
-        "manualPrices": {"data": [{"type": "inAppPurchasePrices", "id": "price0"}]}}},
-        "included": [{"type": "inAppPurchasePrices", "id": "price0", "attributes": {"startDate": None},
+        "manualPrices": {"data": [{"type": "inAppPurchasePrices", "id": "${price0}"}]}}},
+        "included": [{"type": "inAppPurchasePrices", "id": "${price0}", "attributes": {"startDate": None},
                       "relationships": {"inAppPurchasePricePoint": {"data": {"type": "inAppPurchasePricePoints", "id": point["id"]}}}}]})
     print("판매 지역: 전체")
     territories = [t["id"] for t in get_all("/v1/territories")]
@@ -272,7 +317,7 @@ def cmd_build():
         sys.exit("업로드 실패:\n" + tail)
     print("업로드 끝. 처리 기다리는 중")
     for _ in range(60):
-        builds = call("GET", f"/v1/apps/{a['id']}/builds", params={"sort": "-uploadedDate", "limit": 3})["data"]
+        builds = call("GET", "/v1/builds", params={"filter[app]": a["id"], "sort": "-uploadedDate", "limit": 3})["data"]
         ready = [b for b in builds if b["attributes"]["processingState"] == "VALID"]
         if ready:
             b = ready[0]
@@ -296,7 +341,7 @@ def cmd_submit():
 
 
 if __name__ == "__main__":
-    cmds = {"info": cmd_info, "metadata": cmd_metadata, "screenshots": cmd_screenshots, "iap": cmd_iap, "build": cmd_build, "submit": cmd_submit}
+    cmds = {"info": cmd_info, "metadata": cmd_metadata, "pricing": cmd_pricing, "screenshots": cmd_screenshots, "iap": cmd_iap, "build": cmd_build, "submit": cmd_submit}
     if len(sys.argv) < 2 or sys.argv[1] not in cmds:
         sys.exit(__doc__)
     cmds[sys.argv[1]]()

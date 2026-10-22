@@ -12,7 +12,8 @@
     "iapProductId": "realmasse.mosaiccam.removeads",
     "iapType": "NON_CONSUMABLE",
     "iapPriceKRW": 3000,
-    "reviewNotes": "사진을 찍거나 앨범에서 고르면 번호판·얼굴을 찾아 상자로 표시합니다. 상자를 탭하면 모자이크되고 '저장'을 누르면 전면 광고 뒤에 사진 앱에 저장됩니다. 홈 아래 '광고 없이 쓰기'에서 광고 제거(비소모성)를 살 수 있습니다. 모든 처리는 기기 안에서만 이루어지며 계정이 필요 없습니다. / Take or pick a photo; detected plates and faces are outlined. Tap to pixelate, then Save shows an interstitial ad and saves to Photos. 'Go ad-free' at the bottom of the home screen offers the non-consumable Remove Ads purchase. Everything runs on-device; no account needed."
+    "reviewNotes": "사진을 찍거나 앨범에서 고르면 번호판·얼굴을 찾아 상자로 표시합니다. 상자를 탭하면 모자이크되고 '저장'을 누르면 전면 광고 뒤에 사진 앱에 저장됩니다. 홈 아래 '광고 없이 쓰기'에서 광고 제거(비소모성)를 살 수 있습니다. 모든 처리는 기기 안에서만 이루어지며 계정이 필요 없습니다. / Take or pick a photo; detected plates and faces are outlined. Tap to pixelate, then Save shows an interstitial ad and saves to Photos. 'Go ad-free' at the bottom of the home screen offers the non-consumable Remove Ads purchase. Everything runs on-device; no account needed.",
+    "copyright": "2026 Seihee Han"
   },
   "locales": {
     "ko": {
@@ -365,15 +366,6 @@
       "iapName": "Quitar anuncios",
       "iapDesc": "Quita el anuncio que aparece al guardar",
       "description": "Mosaic encuentra automáticamente las matrículas y las caras de tus fotos. Toca lo que quieras ocultar y se pixela al instante. Al guardar se añade una foto nueva a tu fototeca y el original queda intacto.\n\nIdeal para\n• Ocultar la matrícula antes de publicar un coche en venta\n• Difuminar a los transeúntes en fotos para tu blog o redes sociales\n• Proteger las caras de otras personas en fotos familiares\n\nCómo funciona\n1. Haz una foto o elige una de la fototeca\n2. Las matrículas y caras detectadas aparecen enmarcadas\n3. Toca lo que quieras ocultar, o ocúltalo todo de una vez\n4. ¿Falta algo? Arrastra para dibujar tu propia zona\n5. Guarda o comparte al momento\n\nPrivado por diseño\n• Todo se procesa en tu dispositivo. Las fotos nunca se suben\n• Las fotos guardadas no contienen ubicación ni otros metadatos\n• El pixelado no se puede deshacer y tu foto original se conserva\n\nAl guardar aparece un anuncio. ¿Prefieres sin anuncios? Una única compra en la app los elimina para siempre."
-    },
-    "zh-HK": {
-      "name": "馬賽克 - 人臉與車牌",
-      "subtitle": "輕點一下，遮住人臉和車牌",
-      "keywords": "馬賽克,模糊,車牌,人臉,打碼,照片,隱私,肖像,二手車,匿名,編輯",
-      "whatsNew": "首次發布。自動找出車牌和人臉，輕點即可打碼。",
-      "iapName": "移除廣告",
-      "iapDesc": "移除儲存時顯示的廣告",
-      "description": "自動找出照片裡的車牌和人臉。點一下要遮住的地方就打碼，儲存後會以新照片存入相簿，原圖保持不變。\n\n適合這些情況\n• 刊登二手車照片前遮住車牌\n• 部落格、社群照片裡遮住路人的臉\n• 家庭合照裡遮住其他人的臉\n\n使用方法\n1. 拍照或從相簿選擇\n2. 找到的車牌和人臉會用框標出\n3. 點一下要遮住的地方，也可以一鍵全部打碼\n4. 沒找到的地方，拖曳手指自行框選\n5. 儲存或直接分享\n\n安心使用\n• 全部在本機處理，照片不會上傳到任何伺服器\n• 儲存的照片不包含拍攝位置等資訊\n• 打碼無法復原，但原圖會保留\n\n儲存時會顯示一次廣告。想要無廣告，在 App 內購買一次即可。"
     }
   }
 }
