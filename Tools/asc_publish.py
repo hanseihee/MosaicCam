@@ -333,6 +333,13 @@ def cmd_build():
     if "EXPORT SUCCEEDED" not in r.stdout:
         sys.exit("업로드 실패:\n" + tail)
     print("업로드 끝. 처리 기다리는 중")
+    cmd_attach()
+
+
+def cmd_attach():
+    """처리가 끝난 최신 빌드를 버전에 연결한다 (업로드는 하지 않음)"""
+    a = app()
+    v = version(a["id"])
     for _ in range(60):
         builds = call("GET", "/v1/builds", params={"filter[app]": a["id"], "sort": "-uploadedDate", "limit": 3})["data"]
         ready = [b for b in builds if b["attributes"]["processingState"] == "VALID"]
@@ -358,7 +365,7 @@ def cmd_submit():
 
 
 if __name__ == "__main__":
-    cmds = {"info": cmd_info, "metadata": cmd_metadata, "pricing": cmd_pricing, "screenshots": cmd_screenshots, "iap": cmd_iap, "build": cmd_build, "submit": cmd_submit}
+    cmds = {"info": cmd_info, "metadata": cmd_metadata, "pricing": cmd_pricing, "screenshots": cmd_screenshots, "iap": cmd_iap, "build": cmd_build, "attach": cmd_attach, "submit": cmd_submit}
     if len(sys.argv) < 2 or sys.argv[1] not in cmds:
         sys.exit(__doc__)
     cmds[sys.argv[1]]()
