@@ -1,0 +1,379 @@
+{
+  "common": {
+    "appName": "모자이크 - 얼굴, 번호판",
+    "primaryLocale": "ko",
+    "bundleId": "realmasse.mosaiccam",
+    "sku": "mosaiccam-ios",
+    "privacyPolicyUrl": "https://github.com/hanseihee/MosaicCam/blob/main/docs/privacy.md",
+    "supportUrl": "https://github.com/hanseihee/MosaicCam/blob/main/docs/support.md",
+    "primaryCategory": "PHOTO_AND_VIDEO",
+    "secondaryCategory": "UTILITIES",
+    "ageRating": "4+",
+    "iapProductId": "realmasse.mosaiccam.removeads",
+    "iapType": "NON_CONSUMABLE",
+    "iapPriceKRW": 3000,
+    "reviewNotes": "사진을 찍거나 앨범에서 고르면 번호판·얼굴을 찾아 상자로 표시합니다. 상자를 탭하면 모자이크되고 '저장'을 누르면 전면 광고 뒤에 사진 앱에 저장됩니다. 홈 아래 '광고 없이 쓰기'에서 광고 제거(비소모성)를 살 수 있습니다. 모든 처리는 기기 안에서만 이루어지며 계정이 필요 없습니다. / Take or pick a photo; detected plates and faces are outlined. Tap to pixelate, then Save shows an interstitial ad and saves to Photos. 'Go ad-free' at the bottom of the home screen offers the non-consumable Remove Ads purchase. Everything runs on-device; no account needed."
+  },
+  "locales": {
+    "ko": {
+      "name": "모자이크 - 얼굴, 번호판",
+      "subtitle": "탭 한 번으로 얼굴과 번호판 가리기",
+      "keywords": "모자이크,블러,번호판,얼굴,가리기,사진,개인정보,초상권,중고차,익명,편집",
+      "whatsNew": "첫 출시예요. 번호판과 얼굴을 찾아 탭 한 번으로 가려요.",
+      "iapName": "광고 제거",
+      "iapDesc": "저장할 때 나오는 광고를 없애요",
+      "description": "사진 속 번호판과 얼굴을 자동으로 찾아 드려요. 가릴 곳을 탭하면 바로 모자이크되고, 저장하면 사진 앱에 새 사진으로 들어가요. 원본은 그대로예요.\n\n이런 때 좋아요\n• 중고차 사진을 올릴 때 번호판 가리기\n• 블로그·SNS에 올릴 사진에서 지나가는 사람 얼굴 가리기\n• 아이·가족 사진에서 다른 사람 얼굴 가리기\n\n이렇게 써요\n1. 사진을 찍거나 앨범에서 골라요\n2. 찾은 번호판과 얼굴이 상자로 표시돼요\n3. 가릴 곳을 탭해요. 모두 가리기도 있어요\n4. 못 찾은 곳은 손으로 끌어서 그려요\n5. 저장하거나 바로 공유해요\n\n안심하세요\n• 모든 처리는 기기 안에서만 해요. 사진을 서버로 보내지 않아요\n• 저장한 사진에는 촬영 위치 같은 정보가 들어가지 않아요\n• 모자이크는 되돌릴 수 없어요. 원본 사진은 그대로 남아요\n\n저장할 때 광고가 한 번 나와요. 광고 없이 쓰고 싶으면 앱 안에서 한 번만 사면 돼요."
+    },
+    "en-US": {
+      "name": "Mosaic - Faces & Plates",
+      "subtitle": "Hide faces and plates in a tap",
+      "keywords": "mosaic,blur,pixelate,license plate,face,hide,privacy,photo,anonymize,censor,car,editor",
+      "whatsNew": "First release. Finds plates and faces so you can hide them with a tap.",
+      "iapName": "Remove Ads",
+      "iapDesc": "Removes the ad shown when you save",
+      "description": "Mosaic finds license plates and faces in your photos automatically. Tap what you want to hide and it's pixelated instantly. Saving adds a new photo to your library and leaves the original untouched.\n\nGreat for\n• Hiding plates before posting a car for sale\n• Blurring passers-by in photos for your blog or social media\n• Protecting other people's faces in family photos\n\nHow it works\n1. Take a photo or pick one from your library\n2. Detected plates and faces are outlined\n3. Tap what to hide, or hide everything at once\n4. Missed something? Drag to draw your own area\n5. Save or share right away\n\nPrivate by design\n• Everything runs on your device. Photos are never uploaded\n• Saved photos contain no location or other metadata\n• Pixelation can't be reversed, and your original photo is kept\n\nAn ad shows when you save. Prefer no ads? A single in-app purchase removes them for good."
+    },
+    "ja": {
+      "name": "モザイク - 顔・ナンバー",
+      "subtitle": "タップひとつで顔とナンバーを隠す",
+      "keywords": "モザイク,ぼかし,ナンバープレート,顔,隠す,写真,プライバシー,肖像権,中古車,匿名,加工",
+      "whatsNew": "初回リリースです。ナンバーと顔を見つけて、タップひとつで隠せます。",
+      "iapName": "広告をなくす",
+      "iapDesc": "保存のときに出る広告をなくします",
+      "description": "写真の中のナンバープレートと顔を自動で見つけます。隠したい場所をタップするだけでモザイクがかかり、保存すると写真アプリに新しい写真として入ります。元の写真はそのままです。\n\nこんなときに\n• 中古車の写真を載せる前にナンバーを隠す\n• ブログやSNSに載せる写真で通行人の顔を隠す\n• 家族写真で他の人の顔を隠す\n\n使い方\n1. 写真を撮るか、アルバムから選ぶ\n2. 見つかったナンバーと顔が枠で表示される\n3. 隠したい場所をタップ。まとめて隠すこともできる\n4. 見つからなかった場所はドラッグして自分で描く\n5. 保存するか、そのまま共有する\n\n安心して使える\n• 処理はすべて端末の中だけ。写真をサーバーに送りません\n• 保存した写真に撮影場所などの情報は入りません\n• モザイクは元に戻せませんが、元の写真は残ります\n\n保存のときに広告が一度表示されます。広告なしで使いたい場合は、アプリ内で一度だけ購入してください。"
+    },
+    "zh-Hans": {
+      "name": "马赛克 - 人脸与车牌",
+      "subtitle": "轻点一下，遮住人脸和车牌",
+      "keywords": "马赛克,模糊,车牌,人脸,打码,照片,隐私,肖像,二手车,匿名,编辑",
+      "whatsNew": "首次发布。自动找到车牌和人脸，轻点即可打码。",
+      "iapName": "去除广告",
+      "iapDesc": "去掉保存时显示的广告",
+      "description": "自动找到照片里的车牌和人脸。点一下要遮住的地方就打码，保存后会作为新照片存入相册，原图保持不变。\n\n适合这些场景\n• 发布二手车照片前遮住车牌\n• 博客、社交平台照片里遮住路人的脸\n• 家庭合照里遮住其他人的脸\n\n使用方法\n1. 拍照或从相册选择\n2. 找到的车牌和人脸会用框标出\n3. 点一下要遮住的地方，也可以一键全部打码\n4. 没找到的地方，拖动手指自己框选\n5. 保存或直接分享\n\n放心使用\n• 全部在本机处理，照片不会上传到任何服务器\n• 保存的照片不包含拍摄位置等信息\n• 打码无法撤销，但原图会保留\n\n保存时会显示一次广告。想要无广告，在应用内购买一次即可。"
+    },
+    "zh-Hant": {
+      "name": "馬賽克 - 人臉與車牌",
+      "subtitle": "輕點一下，遮住人臉和車牌",
+      "keywords": "馬賽克,模糊,車牌,人臉,打碼,照片,隱私,肖像,二手車,匿名,編輯",
+      "whatsNew": "首次發布。自動找出車牌和人臉，輕點即可打碼。",
+      "iapName": "移除廣告",
+      "iapDesc": "移除儲存時顯示的廣告",
+      "description": "自動找出照片裡的車牌和人臉。點一下要遮住的地方就打碼，儲存後會以新照片存入相簿，原圖保持不變。\n\n適合這些情況\n• 刊登二手車照片前遮住車牌\n• 部落格、社群照片裡遮住路人的臉\n• 家庭合照裡遮住其他人的臉\n\n使用方法\n1. 拍照或從相簿選擇\n2. 找到的車牌和人臉會用框標出\n3. 點一下要遮住的地方，也可以一鍵全部打碼\n4. 沒找到的地方，拖曳手指自行框選\n5. 儲存或直接分享\n\n安心使用\n• 全部在本機處理，照片不會上傳到任何伺服器\n• 儲存的照片不包含拍攝位置等資訊\n• 打碼無法復原，但原圖會保留\n\n儲存時會顯示一次廣告。想要無廣告，在 App 內購買一次即可。"
+    },
+    "es-ES": {
+      "name": "Mosaic - Caras y matrículas",
+      "subtitle": "Oculta caras y matrículas",
+      "keywords": "mosaico,pixelar,difuminar,matrícula,cara,ocultar,privacidad,foto,anonimizar,censurar,coche",
+      "whatsNew": "Primera versión. Encuentra matrículas y caras para que las ocultes con un toque.",
+      "iapName": "Quitar anuncios",
+      "iapDesc": "Quita el anuncio que aparece al guardar",
+      "description": "Mosaic encuentra automáticamente las matrículas y las caras de tus fotos. Toca lo que quieras ocultar y se pixela al instante. Al guardar se añade una foto nueva a tu fototeca y el original queda intacto.\n\nIdeal para\n• Ocultar la matrícula antes de publicar un coche en venta\n• Difuminar a los transeúntes en fotos para tu blog o redes sociales\n• Proteger las caras de otras personas en fotos familiares\n\nCómo funciona\n1. Haz una foto o elige una de la fototeca\n2. Las matrículas y caras detectadas aparecen enmarcadas\n3. Toca lo que quieras ocultar, o ocúltalo todo de una vez\n4. ¿Falta algo? Arrastra para dibujar tu propia zona\n5. Guarda o comparte al momento\n\nPrivado por diseño\n• Todo se procesa en tu dispositivo. Las fotos nunca se suben\n• Las fotos guardadas no contienen ubicación ni otros metadatos\n• El pixelado no se puede deshacer y tu foto original se conserva\n\nAl guardar aparece un anuncio. ¿Prefieres sin anuncios? Una única compra en la app los elimina para siempre."
+    },
+    "fr-FR": {
+      "name": "Mosaic - Visages et plaques",
+      "subtitle": "Masquez visages et plaques",
+      "keywords": "mosaïque,pixeliser,flouter,plaque,visage,masquer,confidentialité,photo,anonymiser,censurer,voiture",
+      "whatsNew": "Première version. Repère plaques et visages pour les masquer d’un simple toucher.",
+      "iapName": "Supprimer les pubs",
+      "iapDesc": "Supprime la pub affichée à l’enregistrement",
+      "description": "Mosaic repère automatiquement les plaques d’immatriculation et les visages dans vos photos. Touchez ce que vous voulez masquer : c’est pixelisé aussitôt. L’enregistrement ajoute une nouvelle photo à votre photothèque et laisse l’originale intacte.\n\nIdéal pour\n• Masquer la plaque avant de publier une voiture à vendre\n• Flouter les passants sur les photos de votre blog ou de vos réseaux sociaux\n• Protéger le visage des autres personnes sur les photos de famille\n\nComment ça marche\n1. Prenez une photo ou choisissez-en une dans la photothèque\n2. Les plaques et visages détectés sont encadrés\n3. Touchez ce qu’il faut masquer, ou masquez tout d’un coup\n4. Un oubli ? Glissez pour tracer votre propre zone\n5. Enregistrez ou partagez immédiatement\n\nConçu pour la confidentialité\n• Tout se passe sur votre appareil. Aucune photo n’est envoyée\n• Les photos enregistrées ne contiennent ni position ni autres métadonnées\n• La pixelisation est irréversible, et votre photo d’origine est conservée\n\nUne publicité s’affiche à l’enregistrement. Vous préférez sans pub ? Un seul achat intégré les supprime définitivement."
+    },
+    "de-DE": {
+      "name": "Mosaic - Gesicht & Kennzeichen",
+      "subtitle": "Antippen, verpixeln, fertig",
+      "keywords": "mosaik,verpixeln,kennzeichen,gesicht,verbergen,datenschutz,foto,anonymisieren,zensieren,auto",
+      "whatsNew": "Erste Version. Findet Kennzeichen und Gesichter, die du mit einem Tipp verpixelst.",
+      "iapName": "Werbung entfernen",
+      "iapDesc": "Entfernt die Werbung beim Speichern",
+      "description": "Mosaic findet Kennzeichen und Gesichter in deinen Fotos automatisch. Tippe an, was du verbergen willst, und es wird sofort verpixelt. Beim Speichern landet ein neues Foto in deiner Mediathek, das Original bleibt unverändert.\n\nIdeal für\n• Kennzeichen verpixeln, bevor du ein Auto zum Verkauf einstellst\n• Passanten auf Fotos für Blog oder Social Media unkenntlich machen\n• Gesichter anderer Personen auf Familienfotos schützen\n\nSo funktioniert es\n1. Foto aufnehmen oder aus der Mediathek wählen\n2. Erkannte Kennzeichen und Gesichter werden umrahmt\n3. Antippen, was verborgen werden soll, oder alles auf einmal\n4. Etwas übersehen? Ziehe, um einen eigenen Bereich zu markieren\n5. Speichern oder direkt teilen\n\nDatenschutz von Grund auf\n• Alles läuft auf deinem Gerät. Fotos werden nie hochgeladen\n• Gespeicherte Fotos enthalten keinen Standort und keine anderen Metadaten\n• Die Verpixelung lässt sich nicht rückgängig machen, dein Originalfoto bleibt erhalten\n\nBeim Speichern erscheint eine Werbung. Lieber ohne? Ein einmaliger In-App-Kauf entfernt sie dauerhaft."
+    },
+    "it": {
+      "name": "Mosaic - Volti e targhe",
+      "subtitle": "Nascondi volti e targhe",
+      "keywords": "mosaico,pixelare,sfocare,targa,volto,nascondere,privacy,foto,anonimizzare,censurare,auto",
+      "whatsNew": "Prima versione. Trova targhe e volti da nascondere con un tocco.",
+      "iapName": "Rimuovi la pubblicità",
+      "iapDesc": "Rimuove l’annuncio mostrato al salvataggio",
+      "description": "Mosaic trova automaticamente targhe e volti nelle tue foto. Tocca ciò che vuoi nascondere e viene pixelato all’istante. Salvando, una nuova foto viene aggiunta alla libreria e l’originale resta intatto.\n\nPerfetto per\n• Nascondere la targa prima di pubblicare un’auto in vendita\n• Sfocare i passanti nelle foto per il blog o i social\n• Proteggere i volti degli altri nelle foto di famiglia\n\nCome funziona\n1. Scatta una foto o scegline una dalla libreria\n2. Targhe e volti rilevati vengono evidenziati\n3. Tocca cosa nascondere, oppure nascondi tutto in una volta\n4. Manca qualcosa? Trascina per disegnare la tua area\n5. Salva o condividi subito\n\nPrivacy prima di tutto\n• Tutto avviene sul tuo dispositivo. Le foto non vengono mai caricate\n• Le foto salvate non contengono posizione né altri metadati\n• La pixelatura non si può annullare, ma la foto originale resta\n\nAl salvataggio appare un annuncio. Preferisci senza? Un unico acquisto in-app lo rimuove per sempre."
+    },
+    "pt-BR": {
+      "name": "Mosaic - Rostos e placas",
+      "subtitle": "Rostos e placas em um toque",
+      "keywords": "mosaico,pixelar,desfocar,placa,rosto,ocultar,privacidade,foto,anonimizar,censurar,carro",
+      "whatsNew": "Primeira versão. Encontra placas e rostos para você ocultar com um toque.",
+      "iapName": "Remover anúncios",
+      "iapDesc": "Remove o anúncio exibido ao salvar",
+      "description": "O Mosaic encontra placas e rostos nas suas fotos automaticamente. Toque no que quer ocultar e pronto, está pixelado. Ao salvar, uma nova foto vai para o álbum e a original fica intacta.\n\nÓtimo para\n• Ocultar a placa antes de anunciar um carro\n• Desfocar pessoas que passam em fotos do blog ou das redes sociais\n• Proteger o rosto de outras pessoas em fotos de família\n\nComo funciona\n1. Tire uma foto ou escolha uma do álbum\n2. Placas e rostos detectados aparecem marcados\n3. Toque no que ocultar, ou oculte tudo de uma vez\n4. Faltou algo? Arraste para desenhar sua própria área\n5. Salve ou compartilhe na hora\n\nPrivacidade de verdade\n• Tudo acontece no seu aparelho. As fotos nunca são enviadas\n• As fotos salvas não têm localização nem outros metadados\n• A pixelação não pode ser desfeita, e a foto original é mantida\n\nUm anúncio aparece ao salvar. Prefere sem anúncios? Uma única compra no app os remove para sempre."
+    },
+    "pt-PT": {
+      "name": "Mosaic - Rostos e matrículas",
+      "subtitle": "Rostos e matrículas num toque",
+      "keywords": "mosaico,pixelizar,desfocar,matrícula,rosto,ocultar,privacidade,fotografia,anonimizar,censurar,carro",
+      "whatsNew": "Primeira versão. Encontra matrículas e rostos para os ocultar com um toque.",
+      "iapName": "Remover anúncios",
+      "iapDesc": "Remove o anúncio mostrado ao guardar",
+      "description": "O Mosaic encontra automaticamente matrículas e rostos nas suas fotografias. Toque no que quer ocultar e fica pixelizado de imediato. Ao guardar, é adicionada uma nova fotografia à biblioteca e a original fica intacta.\n\nIdeal para\n• Ocultar a matrícula antes de anunciar um carro\n• Desfocar transeuntes em fotografias para o blogue ou redes sociais\n• Proteger o rosto de outras pessoas em fotografias de família\n\nComo funciona\n1. Tire uma fotografia ou escolha uma da biblioteca\n2. As matrículas e rostos detetados aparecem assinalados\n3. Toque no que ocultar, ou oculte tudo de uma vez\n4. Faltou algo? Arraste para desenhar a sua própria área\n5. Guarde ou partilhe de imediato\n\nPrivacidade a sério\n• Tudo acontece no seu dispositivo. As fotografias nunca são enviadas\n• As fotografias guardadas não contêm localização nem outros metadados\n• A pixelização não pode ser anulada e a fotografia original é mantida\n\nAparece um anúncio ao guardar. Prefere sem anúncios? Uma única compra na app remove-os para sempre."
+    },
+    "nl-NL": {
+      "name": "Mosaic - Gezichten & kentekens",
+      "subtitle": "Verberg gezichten en kentekens",
+      "keywords": "mozaïek,pixelen,vervagen,kenteken,gezicht,verbergen,privacy,foto,anonimiseren,censureren,auto",
+      "whatsNew": "Eerste versie. Vindt kentekens en gezichten die je met één tik verbergt.",
+      "iapName": "Advertenties verwijderen",
+      "iapDesc": "Verwijdert de advertentie bij het opslaan",
+      "description": "Mosaic vindt kentekens en gezichten in je foto's automatisch. Tik op wat je wilt verbergen en het wordt direct gepixeld. Bij opslaan komt er een nieuwe foto in je bibliotheek en blijft het origineel onaangetast.\n\nHandig voor\n• Het kenteken verbergen voordat je een auto te koop zet\n• Voorbijgangers vervagen op foto's voor je blog of social media\n• Gezichten van anderen beschermen op familiefoto's\n\nZo werkt het\n1. Maak een foto of kies er een uit je bibliotheek\n2. Gevonden kentekens en gezichten krijgen een kader\n3. Tik op wat je wilt verbergen, of verberg alles in één keer\n4. Iets gemist? Sleep om zelf een gebied te markeren\n5. Sla op of deel meteen\n\nPrivacy voorop\n• Alles gebeurt op je apparaat. Foto's worden nooit geüpload\n• Opgeslagen foto's bevatten geen locatie of andere metadata\n• Pixelen kan niet ongedaan worden gemaakt, je originele foto blijft bewaard\n\nBij het opslaan verschijnt een advertentie. Liever zonder? Eén aankoop in de app verwijdert ze voorgoed."
+    },
+    "sv": {
+      "name": "Mosaic - Ansikten & skyltar",
+      "subtitle": "Dölj ansikten och skyltar",
+      "keywords": "mosaik,pixla,sudda,registreringsskylt,ansikte,dölj,integritet,foto,anonymisera,censurera,bil",
+      "whatsNew": "Första versionen. Hittar skyltar och ansikten som du döljer med ett tryck.",
+      "iapName": "Ta bort annonser",
+      "iapDesc": "Tar bort annonsen som visas när du sparar",
+      "description": "Mosaic hittar registreringsskyltar och ansikten i dina foton automatiskt. Tryck på det du vill dölja så pixlas det direkt. När du sparar läggs ett nytt foto till i biblioteket och originalet rörs inte.\n\nPerfekt för\n• Dölja skylten innan du lägger ut en bil till salu\n• Sudda förbipasserande på foton till bloggen eller sociala medier\n• Skydda andras ansikten på familjefoton\n\nSå fungerar det\n1. Ta ett foto eller välj ett från biblioteket\n2. Hittade skyltar och ansikten ramas in\n3. Tryck på det som ska döljas, eller dölj allt på en gång\n4. Missade något? Dra för att rita ett eget område\n5. Spara eller dela direkt\n\nIntegritet från grunden\n• Allt sker på din enhet. Foton laddas aldrig upp\n• Sparade foton innehåller ingen plats eller annan metadata\n• Pixlingen kan inte ångras, och ditt originalfoto finns kvar\n\nEn annons visas när du sparar. Vill du slippa den? Ett enda köp i appen tar bort annonserna för gott."
+    },
+    "da": {
+      "name": "Mosaic - Ansigter & plader",
+      "subtitle": "Skjul ansigter og nummerplader",
+      "keywords": "mosaik,slør,pixel,nummerplade,ansigt,skjul,privatliv,foto,anonymiser,censur,bil",
+      "whatsNew": "Første version. Finder nummerplader og ansigter, som du skjuler med ét tryk.",
+      "iapName": "Fjern reklamer",
+      "iapDesc": "Fjerner reklamen, der vises, når du gemmer",
+      "description": "Mosaic finder automatisk nummerplader og ansigter på dine billeder. Tryk på det, du vil skjule, og det sløres med det samme. Når du gemmer, kommer der et nyt billede i dit bibliotek, og originalen røres ikke.\n\nGodt til\n• Skjule nummerpladen, før du sætter en bil til salg\n• Sløre forbipasserende på billeder til bloggen eller sociale medier\n• Beskytte andres ansigter på familiebilleder\n\nSådan virker det\n1. Tag et billede, eller vælg et fra biblioteket\n2. Fundne nummerplader og ansigter får en ramme\n3. Tryk på det, der skal skjules, eller skjul alt på én gang\n4. Mangler der noget? Træk for at tegne dit eget område\n5. Gem eller del med det samme\n\nPrivatliv fra bunden\n• Alt sker på din enhed. Billeder uploades aldrig\n• Gemte billeder indeholder ingen placering eller andre metadata\n• Sløringen kan ikke fortrydes, og dit originale billede bevares\n\nDer vises en reklame, når du gemmer. Vil du være fri? Et enkelt køb i appen fjerner reklamerne for altid."
+    },
+    "fi": {
+      "name": "Mosaic - Kasvot ja kilvet",
+      "subtitle": "Peitä kasvot ja kilvet",
+      "keywords": "mosaiikki,pikselöi,sumenna,rekisterikilpi,kasvot,peitä,yksityisyys,kuva,anonymisoi,sensuroi,auto",
+      "whatsNew": "Ensimmäinen versio. Löytää kilvet ja kasvot, jotka peität napautuksella.",
+      "iapName": "Poista mainokset",
+      "iapDesc": "Poistaa tallennettaessa näytettävän mainoksen",
+      "description": "Mosaic löytää rekisterikilvet ja kasvot kuvistasi automaattisesti. Napauta sitä, minkä haluat peittää, ja se pikselöityy heti. Tallennus lisää kirjastoon uuden kuvan ja alkuperäinen säilyy koskemattomana.\n\nSopii hyvin\n• Kilven peittämiseen ennen auton myynti-ilmoitusta\n• Ohikulkijoiden sumentamiseen blogin tai somen kuvissa\n• Muiden kasvojen suojaamiseen perhekuvissa\n\nNäin se toimii\n1. Ota kuva tai valitse kirjastosta\n2. Löydetyt kilvet ja kasvot kehystetään\n3. Napauta peitettävää tai peitä kaikki kerralla\n4. Jäikö jotain? Vedä ja piirrä oma alue\n5. Tallenna tai jaa heti\n\nYksityisyys etusijalla\n• Kaikki tapahtuu laitteellasi. Kuvia ei koskaan lähetetä\n• Tallennetut kuvat eivät sisällä sijaintia tai muita metatietoja\n• Pikselöintiä ei voi perua, ja alkuperäinen kuva säilyy\n\nTallennettaessa näytetään mainos. Haluatko eroon siitä? Yksi sovelluksen sisäinen osto poistaa mainokset pysyvästi."
+    },
+    "no": {
+      "name": "Mosaic - Ansikter og skilt",
+      "subtitle": "Skjul ansikter og skilt",
+      "keywords": "mosaikk,sladd,piksler,bilskilt,ansikt,skjul,personvern,bilde,anonymiser,sensur,bil",
+      "whatsNew": "Første versjon. Finner skilt og ansikter som du skjuler med ett trykk.",
+      "iapName": "Fjern annonser",
+      "iapDesc": "Fjerner annonsen som vises når du lagrer",
+      "description": "Mosaic finner bilskilt og ansikter i bildene dine automatisk. Trykk på det du vil skjule, så sladdes det med en gang. Når du lagrer, legges et nytt bilde i biblioteket, og originalen røres ikke.\n\nFint til\n• Skjule skiltet før du legger ut en bil til salgs\n• Sladde forbipasserende på bilder til bloggen eller sosiale medier\n• Beskytte andres ansikter på familiebilder\n\nSlik fungerer det\n1. Ta et bilde eller velg et fra biblioteket\n2. Skilt og ansikter som blir funnet, får en ramme\n3. Trykk på det som skal skjules, eller skjul alt på én gang\n4. Gikk noe glipp? Dra for å tegne ditt eget område\n5. Lagre eller del med en gang\n\nPersonvern i bunnen\n• Alt skjer på enheten din. Bilder lastes aldri opp\n• Lagrede bilder inneholder ingen posisjon eller andre metadata\n• Sladdingen kan ikke angres, og originalbildet beholdes\n\nEn annonse vises når du lagrer. Vil du slippe? Ett enkelt kjøp i appen fjerner annonsene for godt."
+    },
+    "ru": {
+      "name": "Мозаика - Лица и номера",
+      "subtitle": "Лица и номера — одно касание",
+      "keywords": "мозаика,размыть,пикселизация,номер,лицо,скрыть,приватность,фото,анонимно,цензура,авто",
+      "whatsNew": "Первый выпуск. Находит номера и лица, чтобы скрыть их одним касанием.",
+      "iapName": "Убрать рекламу",
+      "iapDesc": "Убирает рекламу при сохранении",
+      "description": "Мозаика автоматически находит автомобильные номера и лица на фотографиях. Нажмите на то, что хотите скрыть, и оно сразу замазывается. При сохранении в галерею добавляется новое фото, оригинал остаётся нетронутым.\n\nПригодится, чтобы\n• скрыть номер перед публикацией объявления о продаже машины\n• замазать прохожих на фото для блога или соцсетей\n• защитить лица других людей на семейных снимках\n\nКак это работает\n1. Сделайте фото или выберите из галереи\n2. Найденные номера и лица выделяются рамками\n3. Нажмите, что скрыть, или скройте всё сразу\n4. Что-то пропущено? Проведите пальцем и выделите область сами\n5. Сохраните или сразу поделитесь\n\nПриватность по умолчанию\n• Всё работает на вашем устройстве. Фото никуда не отправляются\n• В сохранённых фото нет геопозиции и других метаданных\n• Замазывание необратимо, а оригинал фото сохраняется\n\nПри сохранении показывается реклама. Хотите без неё? Одна покупка в приложении отключает рекламу навсегда."
+    },
+    "uk": {
+      "name": "Мозаїка - Обличчя й номери",
+      "subtitle": "Обличчя й номери одним дотиком",
+      "keywords": "мозаїка,розмити,пікселізація,номер,обличчя,приховати,приватність,фото,анонімно,цензура,авто",
+      "whatsNew": "Перший випуск. Знаходить номери й обличчя, щоб приховати їх одним дотиком.",
+      "iapName": "Прибрати рекламу",
+      "iapDesc": "Прибирає рекламу під час збереження",
+      "description": "Мозаїка автоматично знаходить автомобільні номери й обличчя на фото. Торкніться того, що хочете приховати, і воно одразу замазується. Під час збереження до галереї додається нове фото, оригінал лишається без змін.\n\nСтане в пригоді, щоб\n• приховати номер перед публікацією оголошення про продаж авто\n• замазати перехожих на фото для блогу чи соцмереж\n• захистити обличчя інших людей на сімейних знімках\n\nЯк це працює\n1. Зробіть фото або виберіть із галереї\n2. Знайдені номери й обличчя виділяються рамками\n3. Торкніться, що приховати, або приховайте все одразу\n4. Щось пропущено? Проведіть пальцем і виділіть область самі\n5. Збережіть або одразу поділіться\n\nПриватність за замовчуванням\n• Усе працює на вашому пристрої. Фото нікуди не надсилаються\n• У збережених фото немає геопозиції та інших метаданих\n• Замазування незворотне, а оригінал фото зберігається\n\nПід час збереження показується реклама. Хочете без неї? Одна покупка в застосунку вимикає рекламу назавжди."
+    },
+    "pl": {
+      "name": "Mosaic - Twarze i tablice",
+      "subtitle": "Twarze i tablice jednym tapem",
+      "keywords": "mozaika,rozmycie,pikseloza,tablica,twarz,ukryj,prywatność,zdjęcie,anonimizacja,cenzura,auto",
+      "whatsNew": "Pierwsze wydanie. Znajduje tablice i twarze, które ukryjesz jednym dotknięciem.",
+      "iapName": "Usuń reklamy",
+      "iapDesc": "Usuwa reklamę wyświetlaną przy zapisie",
+      "description": "Mosaic automatycznie znajduje tablice rejestracyjne i twarze na zdjęciach. Dotknij tego, co chcesz ukryć, a zostanie od razu zapikselowane. Zapis dodaje nowe zdjęcie do biblioteki, a oryginał pozostaje nietknięty.\n\nPrzyda się, gdy\n• ukrywasz tablicę przed wystawieniem auta na sprzedaż\n• rozmywasz przechodniów na zdjęciach do bloga lub mediów społecznościowych\n• chronisz twarze innych osób na zdjęciach rodzinnych\n\nJak to działa\n1. Zrób zdjęcie lub wybierz je z biblioteki\n2. Wykryte tablice i twarze są obramowane\n3. Dotknij, co ukryć, albo ukryj wszystko naraz\n4. Coś pominięto? Przeciągnij, aby zaznaczyć własny obszar\n5. Zapisz lub od razu udostępnij\n\nPrywatność od podstaw\n• Wszystko dzieje się na Twoim urządzeniu. Zdjęcia nigdy nie są wysyłane\n• Zapisane zdjęcia nie zawierają lokalizacji ani innych metadanych\n• Pikselizacji nie da się cofnąć, a oryginalne zdjęcie zostaje zachowane\n\nPrzy zapisie wyświetla się reklama. Wolisz bez reklam? Jeden zakup w aplikacji usuwa je na zawsze."
+    },
+    "cs": {
+      "name": "Mosaic - Obličeje a SPZ",
+      "subtitle": "Skryj obličeje a SPZ klepnutím",
+      "keywords": "mozaika,rozmazat,pixely,SPZ,obličej,skrýt,soukromí,fotka,anonymizace,cenzura,auto",
+      "whatsNew": "První vydání. Najde SPZ a obličeje, které zakryjete jedním klepnutím.",
+      "iapName": "Odstranit reklamy",
+      "iapDesc": "Odstraní reklamu při ukládání",
+      "description": "Mosaic automaticky najde SPZ a obličeje na vašich fotkách. Klepněte na to, co chcete skrýt, a hned se to rozpixeluje. Uložením přibude do knihovny nová fotka, originál zůstane beze změny.\n\nHodí se, když\n• skrýváte SPZ před inzerátem na prodej auta\n• rozmazáváte kolemjdoucí na fotkách pro blog nebo sociální sítě\n• chráníte obličeje ostatních na rodinných fotkách\n\nJak to funguje\n1. Vyfoťte nebo vyberte fotku z knihovny\n2. Nalezené SPZ a obličeje jsou orámované\n3. Klepněte, co skrýt, nebo skryjte vše najednou\n4. Něco chybí? Tažením označte vlastní oblast\n5. Uložte nebo rovnou sdílejte\n\nSoukromí na prvním místě\n• Vše probíhá ve vašem zařízení. Fotky se nikdy neodesílají\n• Uložené fotky neobsahují polohu ani jiná metadata\n• Rozpixelování nejde vrátit, původní fotka zůstane zachována\n\nPři ukládání se zobrazí reklama. Chcete bez reklam? Jediný nákup v aplikaci je odstraní natrvalo."
+    },
+    "sk": {
+      "name": "Mosaic - Tváre a ŠPZ",
+      "subtitle": "Skry tváre a ŠPZ ťuknutím",
+      "keywords": "mozaika,rozmazať,pixely,ŠPZ,tvár,skryť,súkromie,fotka,anonymizácia,cenzúra,auto",
+      "whatsNew": "Prvé vydanie. Nájde ŠPZ a tváre, ktoré zakryjete jedným ťuknutím.",
+      "iapName": "Odstrániť reklamy",
+      "iapDesc": "Odstráni reklamu pri ukladaní",
+      "description": "Mosaic automaticky nájde ŠPZ a tváre na vašich fotkách. Ťuknite na to, čo chcete skryť, a hneď sa to rozpixeluje. Uložením pribudne do knižnice nová fotka, originál ostane bez zmeny.\n\nHodí sa, keď\n• skrývate ŠPZ pred inzerátom na predaj auta\n• rozmazávate okoloidúcich na fotkách pre blog alebo sociálne siete\n• chránite tváre ostatných na rodinných fotkách\n\nAko to funguje\n1. Odfoťte alebo vyberte fotku z knižnice\n2. Nájdené ŠPZ a tváre sú orámované\n3. Ťuknite, čo skryť, alebo skryte všetko naraz\n4. Niečo chýba? Ťahaním označte vlastnú oblasť\n5. Uložte alebo rovno zdieľajte\n\nSúkromie na prvom mieste\n• Všetko prebieha vo vašom zariadení. Fotky sa nikdy neodosielajú\n• Uložené fotky neobsahujú polohu ani iné metadáta\n• Rozpixelovanie sa nedá vrátiť, pôvodná fotka ostane zachovaná\n\nPri ukladaní sa zobrazí reklama. Chcete bez reklám? Jediný nákup v aplikácii ich odstráni natrvalo."
+    },
+    "hu": {
+      "name": "Mosaic - Arcok és rendszámok",
+      "subtitle": "Arc, rendszám: egy koppintás",
+      "keywords": "mozaik,elmosás,pixeles,rendszám,arc,eltakar,adatvédelem,fotó,anonim,cenzúra,autó",
+      "whatsNew": "Első kiadás. Megtalálja a rendszámokat és arcokat, hogy egy koppintással eltakard.",
+      "iapName": "Reklámok eltávolítása",
+      "iapDesc": "Eltávolítja a mentéskor megjelenő hirdetést",
+      "description": "A Mosaic automatikusan megtalálja a rendszámokat és az arcokat a fotóidon. Koppints arra, amit el akarsz takarni, és azonnal pixeles lesz. Mentéskor új fotó kerül a könyvtáradba, az eredeti érintetlen marad.\n\nJól jön, ha\n• eltakarnád a rendszámot, mielőtt meghirdeted az autót\n• elmosnád a járókelőket a blogra vagy közösségi oldalra szánt fotókon\n• megvédenéd mások arcát a családi képeken\n\nÍgy működik\n1. Készíts fotót, vagy válassz egyet a könyvtárból\n2. A felismert rendszámok és arcok keretet kapnak\n3. Koppints arra, amit eltakarsz, vagy takard el egyszerre az összeset\n4. Kimaradt valami? Húzással jelölj ki saját területet\n5. Mentsd el, vagy oszd meg azonnal\n\nAdatvédelem az alapoktól\n• Minden az eszközödön történik. A fotók soha nem kerülnek feltöltésre\n• A mentett fotók nem tartalmaznak helyadatot és más metaadatot\n• A pixelesítés nem vonható vissza, az eredeti fotó megmarad\n\nMentéskor egy hirdetés jelenik meg. Inkább hirdetés nélkül? Egyetlen alkalmazáson belüli vásárlás végleg eltávolítja."
+    },
+    "ro": {
+      "name": "Mosaic - Fețe și numere",
+      "subtitle": "Fețe și numere ascunse instant",
+      "keywords": "mozaic,blur,pixelat,număr,înmatriculare,față,ascunde,confidențialitate,poză,anonim,cenzură",
+      "whatsNew": "Prima versiune. Găsește numere și fețe pe care le ascunzi cu o atingere.",
+      "iapName": "Elimină reclamele",
+      "iapDesc": "Elimină reclama afișată la salvare",
+      "description": "Mosaic găsește automat numerele de înmatriculare și fețele din pozele tale. Atinge ce vrei să ascunzi și este pixelat pe loc. La salvare se adaugă o poză nouă în bibliotecă, iar originalul rămâne neatins.\n\nUtil când\n• ascunzi numărul înainte de a publica o mașină de vânzare\n• blurezi trecătorii din pozele pentru blog sau rețele sociale\n• protejezi fețele altor persoane din pozele de familie\n\nCum funcționează\n1. Fă o poză sau alege una din bibliotecă\n2. Numerele și fețele detectate sunt încadrate\n3. Atinge ce vrei să ascunzi, sau ascunde tot dintr-o dată\n4. A scăpat ceva? Trage pentru a desena propria zonă\n5. Salvează sau trimite imediat\n\nConfidențialitate din start\n• Totul se întâmplă pe dispozitivul tău. Pozele nu sunt încărcate niciodată\n• Pozele salvate nu conțin locația sau alte metadate\n• Pixelarea nu poate fi anulată, iar poza originală se păstrează\n\nLa salvare apare o reclamă. Preferi fără? O singură achiziție în aplicație le elimină definitiv."
+    },
+    "hr": {
+      "name": "Mosaic - Lica i tablice",
+      "subtitle": "Sakrij lica i tablice dodirom",
+      "keywords": "mozaik,zamuti,pikseli,tablica,lice,sakrij,privatnost,fotografija,anonimno,cenzura,auto",
+      "whatsNew": "Prvo izdanje. Pronalazi tablice i lica koje sakrivaš jednim dodirom.",
+      "iapName": "Ukloni oglase",
+      "iapDesc": "Uklanja oglas prikazan pri spremanju",
+      "description": "Mosaic automatski pronalazi registarske tablice i lica na tvojim fotografijama. Dodirni ono što želiš sakriti i odmah je pikselizirano. Spremanjem se u biblioteku dodaje nova fotografija, a original ostaje netaknut.\n\nKorisno kad\n• skrivaš tablicu prije objave oglasa za prodaju auta\n• zamućuješ prolaznike na fotografijama za blog ili društvene mreže\n• štitiš lica drugih ljudi na obiteljskim fotografijama\n\nKako radi\n1. Snimi fotografiju ili je odaberi iz biblioteke\n2. Pronađene tablice i lica su uokvireni\n3. Dodirni što sakriti ili sakrij sve odjednom\n4. Nešto nedostaje? Povuci i označi vlastito područje\n5. Spremi ili odmah podijeli\n\nPrivatnost od temelja\n• Sve se događa na tvom uređaju. Fotografije se nikad ne šalju\n• Spremljene fotografije ne sadrže lokaciju ni druge metapodatke\n• Pikselizacija se ne može poništiti, a originalna fotografija ostaje\n\nPri spremanju se prikazuje oglas. Radije bez oglasa? Jedna kupnja u aplikaciji uklanja ih zauvijek."
+    },
+    "el": {
+      "name": "Mosaic - Πρόσωπα και πινακίδες",
+      "subtitle": "Κρύψτε πρόσωπα και πινακίδες",
+      "keywords": "μωσαϊκό,θόλωμα,πίξελ,πινακίδα,πρόσωπο,απόκρυψη,απόρρητο,φωτογραφία,ανώνυμο,λογοκρισία,αυτοκίνητο",
+      "whatsNew": "Πρώτη έκδοση. Βρίσκει πινακίδες και πρόσωπα για να τα κρύψετε με ένα πάτημα.",
+      "iapName": "Αφαίρεση διαφημίσεων",
+      "iapDesc": "Αφαιρεί τη διαφήμιση κατά την αποθήκευση",
+      "description": "Το Mosaic βρίσκει αυτόματα πινακίδες και πρόσωπα στις φωτογραφίες σας. Πατήστε ό,τι θέλετε να κρύψετε και θολώνει αμέσως. Με την αποθήκευση προστίθεται νέα φωτογραφία στη βιβλιοθήκη και η αρχική μένει άθικτη.\n\nΙδανικό για\n• Απόκρυψη πινακίδας πριν δημοσιεύσετε αυτοκίνητο προς πώληση\n• Θόλωμα περαστικών σε φωτογραφίες για blog ή κοινωνικά δίκτυα\n• Προστασία προσώπων άλλων σε οικογενειακές φωτογραφίες\n\nΠώς λειτουργεί\n1. Τραβήξτε φωτογραφία ή επιλέξτε από τη βιβλιοθήκη\n2. Οι πινακίδες και τα πρόσωπα που βρέθηκαν πλαισιώνονται\n3. Πατήστε τι να κρυφτεί, ή κρύψτε τα όλα μαζί\n4. Ξέφυγε κάτι; Σύρετε για να σχεδιάσετε δική σας περιοχή\n5. Αποθηκεύστε ή μοιραστείτε αμέσως\n\nΑπόρρητο εκ σχεδιασμού\n• Όλα γίνονται στη συσκευή σας. Οι φωτογραφίες δεν ανεβαίνουν ποτέ\n• Οι αποθηκευμένες φωτογραφίες δεν περιέχουν τοποθεσία ή άλλα μεταδεδομένα\n• Το θόλωμα δεν αναιρείται και η αρχική φωτογραφία διατηρείται\n\nΚατά την αποθήκευση εμφανίζεται διαφήμιση. Προτιμάτε χωρίς; Μία αγορά εντός εφαρμογής τις αφαιρεί για πάντα."
+    },
+    "tr": {
+      "name": "Mosaic - Yüzler ve Plakalar",
+      "subtitle": "Yüzleri ve plakaları gizleyin",
+      "keywords": "mozaik,bulanık,pikselleme,plaka,yüz,gizle,gizlilik,fotoğraf,anonim,sansür,araba",
+      "whatsNew": "İlk sürüm. Plakaları ve yüzleri bulur, tek dokunuşla gizlersiniz.",
+      "iapName": "Reklamları kaldır",
+      "iapDesc": "Kaydederken çıkan reklamı kaldırır",
+      "description": "Mosaic fotoğraflarınızdaki plakaları ve yüzleri otomatik bulur. Gizlemek istediğinize dokunun, anında mozaiklenir. Kaydettiğinizde kitaplığınıza yeni bir fotoğraf eklenir, orijinal olduğu gibi kalır.\n\nŞunlar için ideal\n• Satılık araç ilanından önce plakayı gizlemek\n• Blog ya da sosyal medya fotoğraflarında yoldan geçenleri bulanıklaştırmak\n• Aile fotoğraflarında başkalarının yüzlerini korumak\n\nNasıl çalışır\n1. Fotoğraf çekin ya da kitaplıktan seçin\n2. Bulunan plakalar ve yüzler çerçevelenir\n3. Gizlenecek yere dokunun ya da hepsini tek seferde gizleyin\n4. Atlanan bir yer mi var? Sürükleyerek kendi alanınızı çizin\n5. Kaydedin ya da hemen paylaşın\n\nTasarımı gereği gizli\n• Her şey cihazınızda olur. Fotoğraflar asla yüklenmez\n• Kaydedilen fotoğraflarda konum ya da başka meta veri bulunmaz\n• Mozaikleme geri alınamaz, orijinal fotoğrafınız korunur\n\nKaydederken bir reklam çıkar. Reklamsız mı istersiniz? Tek seferlik uygulama içi satın alma reklamları kalıcı olarak kaldırır."
+    },
+    "ar-SA": {
+      "name": "موزاييك - الوجوه واللوحات",
+      "subtitle": "أخفِ الوجوه واللوحات بلمسة",
+      "keywords": "موزاييك,تمويه,تشويش,لوحة,سيارة,وجه,إخفاء,خصوصية,صورة,مجهول,حجب",
+      "whatsNew": "الإصدار الأول. يعثر على اللوحات والوجوه لتخفيها بلمسة واحدة.",
+      "iapName": "إزالة الإعلانات",
+      "iapDesc": "يزيل الإعلان الذي يظهر عند الحفظ",
+      "description": "يعثر موزاييك تلقائيًا على لوحات السيارات والوجوه في صورك. انقر على ما تريد إخفاءه ليُشوَّش فورًا. عند الحفظ تُضاف صورة جديدة إلى مكتبتك ويبقى الأصل كما هو.\n\nمفيد عندما\n• تخفي لوحة السيارة قبل نشر إعلان بيعها\n• تموّه المارّة في صور مدونتك أو حساباتك الاجتماعية\n• تحمي وجوه الآخرين في صور العائلة\n\nكيف يعمل\n1. التقط صورة أو اختر واحدة من المكتبة\n2. تُحاط اللوحات والوجوه المكتشفة بإطارات\n3. انقر على ما تريد إخفاءه، أو أخفِ الكل دفعة واحدة\n4. فاتك شيء؟ اسحب لرسم منطقة بنفسك\n5. احفظ أو شارك مباشرة\n\nالخصوصية أولًا\n• كل شيء يتم على جهازك. لا تُرفع الصور أبدًا\n• الصور المحفوظة لا تحتوي على الموقع أو أي بيانات وصفية أخرى\n• لا يمكن التراجع عن التشويش، وتبقى صورتك الأصلية محفوظة\n\nيظهر إعلان عند الحفظ. تفضّل بدون إعلانات؟ عملية شراء واحدة داخل التطبيق تزيلها نهائيًا."
+    },
+    "he": {
+      "name": "מוזאיקה - פנים ולוחיות",
+      "subtitle": "הסתרת פנים ולוחיות בהקשה",
+      "keywords": "מוזאיקה,טשטוש,פיקסול,לוחית,רישוי,פנים,הסתרה,פרטיות,תמונה,אנונימי,צנזורה",
+      "whatsNew": "גרסה ראשונה. מוצא לוחיות ופנים כדי שתסתירו אותם בהקשה אחת.",
+      "iapName": "הסרת פרסומות",
+      "iapDesc": "מסיר את הפרסומת שמוצגת בשמירה",
+      "description": "מוזאיקה מוצאת אוטומטית לוחיות רישוי ופנים בתמונות שלכם. הקישו על מה שתרצו להסתיר והוא מפוקסל מיד. בשמירה נוספת תמונה חדשה לספרייה והמקור נשאר כפי שהוא.\n\nמתאים במיוחד\n• להסתיר לוחית לפני פרסום רכב למכירה\n• לטשטש עוברי אורח בתמונות לבלוג או לרשתות החברתיות\n• להגן על פנים של אחרים בתמונות משפחתיות\n\nאיך זה עובד\n1. צלמו תמונה או בחרו מהספרייה\n2. לוחיות ופנים שזוהו מסומנים במסגרת\n3. הקישו על מה להסתיר, או הסתירו הכול בבת אחת\n4. פספסנו משהו? גררו כדי לסמן אזור בעצמכם\n5. שמרו או שתפו מיד\n\nפרטיות מהיסוד\n• הכול מתבצע במכשיר שלכם. תמונות לעולם לא נשלחות\n• תמונות שנשמרו לא מכילות מיקום או מטא-נתונים אחרים\n• את הפיקסול אי אפשר לבטל, והתמונה המקורית נשמרת\n\nבשמירה מוצגת פרסומת. מעדיפים בלי? רכישה אחת בתוך האפליקציה מסירה אותן לתמיד."
+    },
+    "hi": {
+      "name": "मोज़ेक - चेहरे व प्लेट",
+      "subtitle": "टैप करके चेहरे व प्लेट छिपाएँ",
+      "keywords": "मोज़ेक,ब्लर,पिक्सेल,नंबर प्लेट,चेहरा,छिपाना,प्राइवेसी,फ़ोटो,गुमनाम,सेंसर,कार",
+      "whatsNew": "पहला संस्करण। नंबर प्लेट और चेहरे ढूँढता है ताकि एक टैप में छिपा सकें।",
+      "iapName": "विज्ञापन हटाएँ",
+      "iapDesc": "सेव करते समय दिखने वाला विज्ञापन हटाता है",
+      "description": "मोज़ेक आपकी फ़ोटो में नंबर प्लेट और चेहरे अपने आप ढूँढ लेता है। जिसे छिपाना हो उस पर टैप करें, वह तुरंत पिक्सेल हो जाता है। सेव करने पर लाइब्रेरी में नई फ़ोटो जुड़ती है और मूल फ़ोटो वैसी ही रहती है।\n\nइनके लिए बढ़िया\n• कार बेचने का विज्ञापन डालने से पहले नंबर प्लेट छिपाना\n• ब्लॉग या सोशल मीडिया की फ़ोटो में राहगीरों के चेहरे धुंधले करना\n• परिवार की फ़ोटो में दूसरों के चेहरे सुरक्षित रखना\n\nऐसे काम करता है\n1. फ़ोटो लें या लाइब्रेरी से चुनें\n2. मिले हुए नंबर प्लेट और चेहरे बॉक्स में दिखते हैं\n3. जिसे छिपाना हो उस पर टैप करें, या सब एक साथ छिपाएँ\n4. कुछ छूट गया? ड्रैग करके अपना हिस्सा बनाएँ\n5. सेव करें या तुरंत शेयर करें\n\nप्राइवेसी पहले\n• सब कुछ आपके डिवाइस पर होता है। फ़ोटो कभी अपलोड नहीं होती\n• सेव की गई फ़ोटो में लोकेशन या दूसरा मेटाडेटा नहीं होता\n• पिक्सेल करना वापस नहीं लिया जा सकता, मूल फ़ोटो सुरक्षित रहती है\n\nसेव करते समय एक विज्ञापन दिखता है। बिना विज्ञापन चाहिए? ऐप में एक बार खरीदें और विज्ञापन हमेशा के लिए हट जाएँगे।"
+    },
+    "id": {
+      "name": "Mosaic - Wajah & Pelat Nomor",
+      "subtitle": "Wajah & pelat, sekali ketuk",
+      "keywords": "mozaik,blur,pikselasi,pelat nomor,wajah,sembunyikan,privasi,foto,anonim,sensor,mobil",
+      "whatsNew": "Rilis pertama. Menemukan pelat dan wajah untuk kamu samarkan sekali ketuk.",
+      "iapName": "Hapus iklan",
+      "iapDesc": "Menghapus iklan yang muncul saat menyimpan",
+      "description": "Mosaic menemukan pelat nomor dan wajah di fotomu secara otomatis. Ketuk yang ingin disamarkan, langsung jadi mozaik. Saat disimpan, foto baru masuk ke galeri dan foto asli tetap utuh.\n\nCocok untuk\n• Menyamarkan pelat sebelum memasang iklan jual mobil\n• Mengaburkan orang lewat di foto blog atau media sosial\n• Melindungi wajah orang lain di foto keluarga\n\nCara kerjanya\n1. Ambil foto atau pilih dari galeri\n2. Pelat dan wajah yang ditemukan diberi kotak\n3. Ketuk yang ingin disamarkan, atau samarkan semua sekaligus\n4. Ada yang terlewat? Seret untuk menggambar area sendiri\n5. Simpan atau langsung bagikan\n\nPrivasi sejak awal\n• Semua diproses di perangkatmu. Foto tidak pernah diunggah\n• Foto yang disimpan tidak berisi lokasi atau metadata lain\n• Mozaik tidak bisa dibatalkan, dan foto aslimu tetap ada\n\nIklan muncul saat menyimpan. Mau tanpa iklan? Satu kali pembelian dalam aplikasi menghapusnya selamanya."
+    },
+    "ms": {
+      "name": "Mosaic - Wajah & Plat Nombor",
+      "subtitle": "Wajah & plat, sekali ketik",
+      "keywords": "mozek,kabur,piksel,plat nombor,wajah,sembunyi,privasi,foto,tanpa nama,tapis,kereta",
+      "whatsNew": "Keluaran pertama. Mencari plat dan wajah untuk anda sembunyikan dengan sekali ketik.",
+      "iapName": "Buang iklan",
+      "iapDesc": "Membuang iklan yang muncul semasa menyimpan",
+      "description": "Mosaic mencari plat nombor dan wajah dalam foto anda secara automatik. Ketik apa yang mahu disembunyikan, terus jadi mozek. Apabila disimpan, foto baharu dimasukkan ke pustaka dan foto asal kekal.\n\nSesuai untuk\n• Menyembunyikan plat sebelum mengiklankan kereta untuk dijual\n• Mengaburkan orang lalu-lalang dalam foto blog atau media sosial\n• Melindungi wajah orang lain dalam foto keluarga\n\nCara ia berfungsi\n1. Ambil foto atau pilih daripada pustaka\n2. Plat dan wajah yang dikesan diberi kotak\n3. Ketik apa yang mahu disembunyikan, atau sembunyikan semua sekali gus\n4. Ada yang tertinggal? Seret untuk melukis kawasan sendiri\n5. Simpan atau terus kongsi\n\nPrivasi dari awal\n• Semuanya diproses pada peranti anda. Foto tidak pernah dimuat naik\n• Foto yang disimpan tiada lokasi atau metadata lain\n• Mozek tidak boleh dibuat asal, dan foto asal anda kekal\n\nIklan dipaparkan semasa menyimpan. Mahu tanpa iklan? Satu pembelian dalam apl membuangnya selama-lamanya."
+    },
+    "th": {
+      "name": "โมเสก - ใบหน้าและป้ายทะเบียน",
+      "subtitle": "แตะครั้งเดียว ซ่อนหน้าและป้าย",
+      "keywords": "โมเสก,เบลอ,พิกเซล,ป้ายทะเบียน,ใบหน้า,ซ่อน,ความเป็นส่วนตัว,รูปภาพ,นิรนาม,เซ็นเซอร์,รถ",
+      "whatsNew": "เวอร์ชันแรก หาป้ายทะเบียนและใบหน้าให้คุณเบลอได้ด้วยการแตะครั้งเดียว",
+      "iapName": "ลบโฆษณา",
+      "iapDesc": "ลบโฆษณาที่แสดงตอนบันทึก",
+      "description": "โมเสกหาป้ายทะเบียนและใบหน้าในรูปของคุณให้อัตโนมัติ แตะจุดที่ต้องการซ่อนก็เบลอทันที เมื่อบันทึกจะได้รูปใหม่ในคลังภาพ ส่วนต้นฉบับยังอยู่ครบ\n\nเหมาะกับ\n• ซ่อนป้ายทะเบียนก่อนลงประกาศขายรถ\n• เบลอคนที่เดินผ่านในรูปสำหรับบล็อกหรือโซเชียล\n• ปกป้องใบหน้าคนอื่นในรูปครอบครัว\n\nวิธีใช้\n1. ถ่ายรูปหรือเลือกจากคลังภาพ\n2. ป้ายทะเบียนและใบหน้าที่พบจะมีกรอบแสดง\n3. แตะจุดที่ต้องการซ่อน หรือซ่อนทั้งหมดในครั้งเดียว\n4. หาไม่เจอ? ลากนิ้ววาดบริเวณเองได้\n5. บันทึกหรือแชร์ได้ทันที\n\nความเป็นส่วนตัวมาก่อน\n• ทุกอย่างทำในเครื่องของคุณ ไม่อัปโหลดรูปไปที่ไหน\n• รูปที่บันทึกไม่มีตำแหน่งหรือข้อมูลเมตาอื่น\n• การเบลอย้อนกลับไม่ได้ แต่รูปต้นฉบับยังอยู่\n\nตอนบันทึกจะมีโฆษณาหนึ่งครั้ง อยากใช้แบบไม่มีโฆษณา? ซื้อในแอปครั้งเดียว ลบโฆษณาถาวร"
+    },
+    "vi": {
+      "name": "Mosaic - Khuôn mặt & Biển số",
+      "subtitle": "Che mặt và biển số một chạm",
+      "keywords": "mosaic,làm mờ,pixel,biển số,khuôn mặt,che,riêng tư,ảnh,ẩn danh,kiểm duyệt,xe",
+      "whatsNew": "Phiên bản đầu tiên. Tìm biển số và khuôn mặt để bạn che chỉ với một chạm.",
+      "iapName": "Bỏ quảng cáo",
+      "iapDesc": "Gỡ quảng cáo hiện khi lưu",
+      "description": "Mosaic tự động tìm biển số xe và khuôn mặt trong ảnh của bạn. Chạm vào chỗ muốn che là được làm mờ ngay. Khi lưu, một ảnh mới được thêm vào thư viện, ảnh gốc giữ nguyên.\n\nHữu ích khi\n• Che biển số trước khi đăng bán xe\n• Làm mờ người qua đường trong ảnh đăng blog hoặc mạng xã hội\n• Bảo vệ khuôn mặt người khác trong ảnh gia đình\n\nCách dùng\n1. Chụp ảnh hoặc chọn từ thư viện\n2. Biển số và khuôn mặt tìm thấy được đóng khung\n3. Chạm vào chỗ cần che, hoặc che tất cả cùng lúc\n4. Bỏ sót chỗ nào? Kéo để tự vẽ vùng cần che\n5. Lưu hoặc chia sẻ ngay\n\nRiêng tư từ thiết kế\n• Mọi thứ xử lý trên thiết bị của bạn. Ảnh không bao giờ được tải lên\n• Ảnh đã lưu không chứa vị trí hay siêu dữ liệu khác\n• Làm mờ không thể hoàn tác, ảnh gốc được giữ lại\n\nQuảng cáo hiện khi lưu. Muốn không quảng cáo? Mua một lần trong ứng dụng để gỡ vĩnh viễn."
+    },
+    "ca": {
+      "name": "Mosaic - Cares i matrícules",
+      "subtitle": "Cares i matrícules amb un toc",
+      "keywords": "mosaic,pixelar,difuminar,matrícula,cara,amagar,privacitat,foto,anonimitzar,censurar,cotxe",
+      "whatsNew": "Primera versió. Troba matrícules i cares perquè les amaguis amb un toc.",
+      "iapName": "Treu els anuncis",
+      "iapDesc": "Treu l’anunci que apareix en desar",
+      "description": "Mosaic troba automàticament les matrícules i les cares de les teves fotos. Toca el que vulguis amagar i es pixela a l’instant. En desar, s’afegeix una foto nova a la biblioteca i l’original queda intacta.\n\nIdeal per a\n• Amagar la matrícula abans de publicar un cotxe en venda\n• Difuminar els vianants a les fotos del blog o les xarxes socials\n• Protegir les cares d’altres persones a les fotos familiars\n\nCom funciona\n1. Fes una foto o tria’n una de la biblioteca\n2. Les matrícules i cares detectades apareixen emmarcades\n3. Toca el que vulguis amagar, o amaga-ho tot de cop\n4. Falta res? Arrossega per dibuixar la teva pròpia zona\n5. Desa o comparteix a l’instant\n\nPrivat per disseny\n• Tot passa al teu dispositiu. Les fotos mai no es pugen\n• Les fotos desades no contenen ubicació ni altres metadades\n• El pixelat no es pot desfer i la foto original es conserva\n\nEn desar apareix un anunci. Prefereixes sense? Una única compra dins l’app els elimina per sempre."
+    },
+    "en-GB": {
+      "name": "Mosaic - Faces & Plates",
+      "subtitle": "Hide faces and plates in a tap",
+      "keywords": "mosaic,blur,pixelate,license plate,face,hide,privacy,photo,anonymize,censor,car,editor",
+      "whatsNew": "First release. Finds plates and faces so you can hide them with a tap.",
+      "iapName": "Remove Ads",
+      "iapDesc": "Removes the ad shown when you save",
+      "description": "Mosaic finds license plates and faces in your photos automatically. Tap what you want to hide and it's pixelated instantly. Saving adds a new photo to your library and leaves the original untouched.\n\nGreat for\n• Hiding plates before posting a car for sale\n• Blurring passers-by in photos for your blog or social media\n• Protecting other people's faces in family photos\n\nHow it works\n1. Take a photo or pick one from your library\n2. Detected plates and faces are outlined\n3. Tap what to hide, or hide everything at once\n4. Missed something? Drag to draw your own area\n5. Save or share right away\n\nPrivate by design\n• Everything runs on your device. Photos are never uploaded\n• Saved photos contain no location or other metadata\n• Pixelation can't be reversed, and your original photo is kept\n\nAn ad shows when you save. Prefer no ads? A single in-app purchase removes them for good."
+    },
+    "en-AU": {
+      "name": "Mosaic - Faces & Plates",
+      "subtitle": "Hide faces and plates in a tap",
+      "keywords": "mosaic,blur,pixelate,license plate,face,hide,privacy,photo,anonymize,censor,car,editor",
+      "whatsNew": "First release. Finds plates and faces so you can hide them with a tap.",
+      "iapName": "Remove Ads",
+      "iapDesc": "Removes the ad shown when you save",
+      "description": "Mosaic finds license plates and faces in your photos automatically. Tap what you want to hide and it's pixelated instantly. Saving adds a new photo to your library and leaves the original untouched.\n\nGreat for\n• Hiding plates before posting a car for sale\n• Blurring passers-by in photos for your blog or social media\n• Protecting other people's faces in family photos\n\nHow it works\n1. Take a photo or pick one from your library\n2. Detected plates and faces are outlined\n3. Tap what to hide, or hide everything at once\n4. Missed something? Drag to draw your own area\n5. Save or share right away\n\nPrivate by design\n• Everything runs on your device. Photos are never uploaded\n• Saved photos contain no location or other metadata\n• Pixelation can't be reversed, and your original photo is kept\n\nAn ad shows when you save. Prefer no ads? A single in-app purchase removes them for good."
+    },
+    "en-CA": {
+      "name": "Mosaic - Faces & Plates",
+      "subtitle": "Hide faces and plates in a tap",
+      "keywords": "mosaic,blur,pixelate,license plate,face,hide,privacy,photo,anonymize,censor,car,editor",
+      "whatsNew": "First release. Finds plates and faces so you can hide them with a tap.",
+      "iapName": "Remove Ads",
+      "iapDesc": "Removes the ad shown when you save",
+      "description": "Mosaic finds license plates and faces in your photos automatically. Tap what you want to hide and it's pixelated instantly. Saving adds a new photo to your library and leaves the original untouched.\n\nGreat for\n• Hiding plates before posting a car for sale\n• Blurring passers-by in photos for your blog or social media\n• Protecting other people's faces in family photos\n\nHow it works\n1. Take a photo or pick one from your library\n2. Detected plates and faces are outlined\n3. Tap what to hide, or hide everything at once\n4. Missed something? Drag to draw your own area\n5. Save or share right away\n\nPrivate by design\n• Everything runs on your device. Photos are never uploaded\n• Saved photos contain no location or other metadata\n• Pixelation can't be reversed, and your original photo is kept\n\nAn ad shows when you save. Prefer no ads? A single in-app purchase removes them for good."
+    },
+    "fr-CA": {
+      "name": "Mosaic - Visages et plaques",
+      "subtitle": "Masquez visages et plaques",
+      "keywords": "mosaïque,pixeliser,flouter,plaque,visage,masquer,confidentialité,photo,anonymiser,censurer,voiture",
+      "whatsNew": "Première version. Repère plaques et visages pour les masquer d’un simple toucher.",
+      "iapName": "Supprimer les pubs",
+      "iapDesc": "Supprime la pub affichée à l’enregistrement",
+      "description": "Mosaic repère automatiquement les plaques d’immatriculation et les visages dans vos photos. Touchez ce que vous voulez masquer : c’est pixelisé aussitôt. L’enregistrement ajoute une nouvelle photo à votre photothèque et laisse l’originale intacte.\n\nIdéal pour\n• Masquer la plaque avant de publier une voiture à vendre\n• Flouter les passants sur les photos de votre blog ou de vos réseaux sociaux\n• Protéger le visage des autres personnes sur les photos de famille\n\nComment ça marche\n1. Prenez une photo ou choisissez-en une dans la photothèque\n2. Les plaques et visages détectés sont encadrés\n3. Touchez ce qu’il faut masquer, ou masquez tout d’un coup\n4. Un oubli ? Glissez pour tracer votre propre zone\n5. Enregistrez ou partagez immédiatement\n\nConçu pour la confidentialité\n• Tout se passe sur votre appareil. Aucune photo n’est envoyée\n• Les photos enregistrées ne contiennent ni position ni autres métadonnées\n• La pixelisation est irréversible, et votre photo d’origine est conservée\n\nUne publicité s’affiche à l’enregistrement. Vous préférez sans pub ? Un seul achat intégré les supprime définitivement."
+    },
+    "es-MX": {
+      "name": "Mosaic - Caras y matrículas",
+      "subtitle": "Oculta caras y matrículas",
+      "keywords": "mosaico,pixelar,difuminar,matrícula,cara,ocultar,privacidad,foto,anonimizar,censurar,coche",
+      "whatsNew": "Primera versión. Encuentra matrículas y caras para que las ocultes con un toque.",
+      "iapName": "Quitar anuncios",
+      "iapDesc": "Quita el anuncio que aparece al guardar",
+      "description": "Mosaic encuentra automáticamente las matrículas y las caras de tus fotos. Toca lo que quieras ocultar y se pixela al instante. Al guardar se añade una foto nueva a tu fototeca y el original queda intacto.\n\nIdeal para\n• Ocultar la matrícula antes de publicar un coche en venta\n• Difuminar a los transeúntes en fotos para tu blog o redes sociales\n• Proteger las caras de otras personas en fotos familiares\n\nCómo funciona\n1. Haz una foto o elige una de la fototeca\n2. Las matrículas y caras detectadas aparecen enmarcadas\n3. Toca lo que quieras ocultar, o ocúltalo todo de una vez\n4. ¿Falta algo? Arrastra para dibujar tu propia zona\n5. Guarda o comparte al momento\n\nPrivado por diseño\n• Todo se procesa en tu dispositivo. Las fotos nunca se suben\n• Las fotos guardadas no contienen ubicación ni otros metadatos\n• El pixelado no se puede deshacer y tu foto original se conserva\n\nAl guardar aparece un anuncio. ¿Prefieres sin anuncios? Una única compra en la app los elimina para siempre."
+    },
+    "zh-HK": {
+      "name": "馬賽克 - 人臉與車牌",
+      "subtitle": "輕點一下，遮住人臉和車牌",
+      "keywords": "馬賽克,模糊,車牌,人臉,打碼,照片,隱私,肖像,二手車,匿名,編輯",
+      "whatsNew": "首次發布。自動找出車牌和人臉，輕點即可打碼。",
+      "iapName": "移除廣告",
+      "iapDesc": "移除儲存時顯示的廣告",
+      "description": "自動找出照片裡的車牌和人臉。點一下要遮住的地方就打碼，儲存後會以新照片存入相簿，原圖保持不變。\n\n適合這些情況\n• 刊登二手車照片前遮住車牌\n• 部落格、社群照片裡遮住路人的臉\n• 家庭合照裡遮住其他人的臉\n\n使用方法\n1. 拍照或從相簿選擇\n2. 找到的車牌和人臉會用框標出\n3. 點一下要遮住的地方，也可以一鍵全部打碼\n4. 沒找到的地方，拖曳手指自行框選\n5. 儲存或直接分享\n\n安心使用\n• 全部在本機處理，照片不會上傳到任何伺服器\n• 儲存的照片不包含拍攝位置等資訊\n• 打碼無法復原，但原圖會保留\n\n儲存時會顯示一次廣告。想要無廣告，在 App 內購買一次即可。"
+    }
+  }
+}
