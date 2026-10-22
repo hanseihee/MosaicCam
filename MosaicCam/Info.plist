@@ -24,9 +24,13 @@
 	<string>ca-app-pub-4582716621646848~8041576819</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>번호판과 얼굴을 가릴 사진을 찍습니다.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>모자이크한 사진을 사진 앱에 저장합니다.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>모자이크한 사진을 사진 앱에 저장합니다.</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>광고를 더 알맞게 보여 주는 데 씁니다. 허용하지 않아도 앱은 그대로 쓸 수 있어요.</string>

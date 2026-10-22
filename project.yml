@@ -17,7 +17,7 @@ settings:
     SWIFT_VERSION: "5.0"
     CODE_SIGN_STYLE: Automatic
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "2"
+    CURRENT_PROJECT_VERSION: "3"
 targets:
   MosaicCam:
     type: application
@@ -35,10 +35,12 @@ targets:
       path: MosaicCam/Info.plist
       properties:
         CFBundleDisplayName: 모자이크
+        LSRequiresIPhoneOS: true
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSCameraUsageDescription: 번호판과 얼굴을 가릴 사진을 찍습니다.
         NSPhotoLibraryAddUsageDescription: 모자이크한 사진을 사진 앱에 저장합니다.
+        NSPhotoLibraryUsageDescription: 모자이크한 사진을 사진 앱에 저장합니다.
         UILaunchScreen:
           UIColorName: LaunchBackground
         UISupportedInterfaceOrientations:
