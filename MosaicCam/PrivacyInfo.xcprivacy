@@ -5,11 +5,11 @@
 	<!-- 앱 자체는 아무 데이터도 모으지 않는다. 광고 SDK가 모으는 것은 SDK 안의 매니페스트가 신고한다. -->
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array/>
-	<!-- 에드몹 광고 식별자(ATT 허용 시) 때문에 추적 예 -->
+	<!-- 앱 코드는 추적 도메인에 접속하지 않으므로 false. true로 두면 NSPrivacyTrackingDomains를 채워야 하는데
+	     (빈 배열이면 ITMS-91064로 거절), 에드몹 도메인을 적으면 추적을 거부한 사용자의 광고 요청을 iOS가 막는다.
+	     광고 식별자 추적은 App Store 앱 개인정보 답변(기기 ID 추적 예)과 ATT 요청으로 신고한다. -->
 	<key>NSPrivacyTracking</key>
-	<true/>
-	<key>NSPrivacyTrackingDomains</key>
-	<array/>
+	<false/>
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>

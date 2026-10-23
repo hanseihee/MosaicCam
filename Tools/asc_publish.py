@@ -12,6 +12,7 @@
   python3 Tools/asc_publish.py screenshots              # docs/appstore/screenshots 의 6.9인치 스크린샷 올리기
   python3 Tools/asc_publish.py iap                      # 광고 제거 상품 만들기(값·번역·심사 스크린샷)
   python3 Tools/asc_publish.py build                    # 아카이브 업로드 후 처리 완료되면 버전에 연결
+  python3 Tools/asc_publish.py attach [빌드 번호]        # 이미 올린 빌드가 처리되면 버전에 연결(기본: project.yml 번호)
   python3 Tools/asc_publish.py submit                   # 심사 제출
 """
 import hashlib
@@ -345,19 +346,30 @@ def cmd_build():
 
 
 def cmd_attach():
-    """처리가 끝난 최신 빌드를 버전에 연결한다 (업로드는 하지 않음)"""
+    """project.yml의 빌드 번호(또는 인자로 준 번호) 빌드가 처리되면 버전에 연결한다 (업로드는 하지 않음).
+    최신 VALID 빌드를 고르면 새 빌드가 처리 중일 때 이전 빌드가 붙으므로 번호로 정확히 찾는다."""
     a = app()
     v = version(a["id"])
+    number = sys.argv[2] if len(sys.argv) > 2 else build_number()
     for _ in range(60):
-        builds = call("GET", "/v1/builds", params={"filter[app]": a["id"], "sort": "-uploadedDate", "limit": 3})["data"]
-        ready = [b for b in builds if b["attributes"]["processingState"] == "VALID"]
-        if ready:
-            b = ready[0]
-            call("PATCH", f"/v1/appStoreVersions/{v['id']}/relationships/build", {"data": {"type": "builds", "id": b["id"]}})
-            print("버전에 빌드 연결:", b["attributes"]["version"])
+        builds = call("GET", "/v1/builds", params={"filter[app]": a["id"], "filter[version]": number, "limit": 1})["data"]
+        state = builds[0]["attributes"]["processingState"] if builds else "업로드 목록에 아직 없음"
+        if state == "VALID":
+            call("PATCH", f"/v1/appStoreVersions/{v['id']}/relationships/build", {"data": {"type": "builds", "id": builds[0]["id"]}})
+            print("버전에 빌드 연결:", number)
             return
+        if state in ("FAILED", "INVALID"):
+            sys.exit(f"빌드 {number} 처리 실패({state}). TestFlight 업로드 로그를 확인하세요.")
+        print(f"빌드 {number}: {state}, 30초 뒤 다시 확인", flush=True)
         time.sleep(30)
     sys.exit("빌드 처리가 끝나지 않았어요. 잠시 뒤 다시 실행하세요.")
+
+
+def build_number():
+    for line in (ROOT / "project.yml").read_text(encoding="utf-8").splitlines():
+        if "CURRENT_PROJECT_VERSION:" in line:
+            return line.split(":", 1)[1].strip().strip('"')
+    sys.exit("project.yml에서 CURRENT_PROJECT_VERSION을 찾지 못했어요.")
 
 
 def cmd_submit():

@@ -25,3 +25,5 @@ App Store Connect → 앱 → 앱 개인정보 → "시작하기". API로는 못
 - 2026-10-23: 위 표대로 7개 유형을 입력하고 게시함(식별자 → 기기 ID만 추적 "예").
 - 인앱 상품은 버전 페이지가 아니라 **앱 내 구입 → 광고 제거 → "심사에 추가" → 기존 초안**으로 심사 제출에 넣는다(API로는 불가).
 - 제출 직후 Apple이 빌드 5를 "잘못된 바이너리"로 판정. 사유는 개발자 계정 메일(ITMS 코드)로만 옴.
+- 사유는 **ITMS-91064 Invalid tracking information**: 앱 `PrivacyInfo.xcprivacy`에 `NSPrivacyTracking` true + 빈 `NSPrivacyTrackingDomains`. Apple TN3181 표대로 true면 도메인을 채워야 무효가 아니다. 앱 코드는 추적 도메인에 접속하지 않고, 에드몹 도메인을 적으면 ATT 거부 사용자의 광고 요청을 iOS가 막으므로 `NSPrivacyTracking` false + 도메인 키 삭제로 고침(빌드 6). 에드몹·UMP 매니페스트에도 추적 키가 없다.
+- 앱 개인정보 답변(기기 ID 추적 "예")은 그대로 둔다. 매니페스트의 추적 키와 App Store 답변은 별개다.
