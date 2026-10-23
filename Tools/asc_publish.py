@@ -375,7 +375,9 @@ def build_number():
 def cmd_submit():
     """초안(READY_FOR_REVIEW)이 있으면 재사용하고, 버전 항목이 없으면 넣은 뒤 제출한다.
     주의: 첫 인앱 상품은 API로 항목 추가가 안 된다(reviewSubmissionItems에 인앱 관계 없음).
-    웹의 앱 내 구입 상세에서 '심사에 추가 → 해당 초안'을 먼저 눌러 둬야 한다."""
+    웹의 앱 내 구입 상세에서 '심사에 추가 → 해당 초안'을 먼저 눌러 둬야 한다.
+    거절돼 '해결되지 않은 문제' 상태인 제출은 API로 다시 못 보낸다(409 not ready). 새 빌드를 attach한 뒤
+    웹 버전 페이지의 '심사 업데이트' → 제출 상세의 '앱 심사에 다시 제출'을 누른다."""
     a = app()
     v = version(a["id"])
     subs = call("GET", f"/v1/apps/{a['id']}/reviewSubmissions", params={"include": "items"})["data"]
