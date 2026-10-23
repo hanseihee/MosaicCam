@@ -119,6 +119,11 @@ def version(app_id):
             v = call("PATCH", f"/v1/appStoreVersions/{v['id']}", {"data": {"type": "appStoreVersions", "id": v["id"],
                      "attributes": {"versionString": VERSION, "releaseType": "AFTER_APPROVAL"}}})["data"]
         return v
+    # 심사 대기·잘못된 바이너리처럼 편집 불가 상태라도 같은 번호의 버전이 있으면 새로 만들지 않는다
+    same = [v for v in versions if v["attributes"]["versionString"] == VERSION]
+    if same:
+        print(f"버전 {VERSION}은 {same[0]['attributes']['appStoreState']} 상태라 그대로 씁니다")
+        return same[0]
     print(f"버전 {VERSION} 만드는 중")
     return call("POST", "/v1/appStoreVersions", {"data": {
         "type": "appStoreVersions",
@@ -157,6 +162,9 @@ def cmd_info():
         print("빌드:", b["attributes"]["version"], b["attributes"]["processingState"], b["attributes"]["uploadedDate"])
     for p in call("GET", f"/v1/apps/{a['id']}/inAppPurchasesV2")["data"]:
         print("인앱:", p["attributes"]["productId"], p["attributes"]["state"])
+    for s in call("GET", f"/v1/apps/{a['id']}/reviewSubmissions", params={"include": "items"})["data"]:
+        n = len(s.get("relationships", {}).get("items", {}).get("data") or [])
+        print("심사 제출:", s["id"], s["attributes"]["state"], f"항목 {n}개", s["attributes"].get("submittedDate") or "")
 
 
 def cmd_metadata():
@@ -353,13 +361,29 @@ def cmd_attach():
 
 
 def cmd_submit():
+    """초안(READY_FOR_REVIEW)이 있으면 재사용하고, 버전 항목이 없으면 넣은 뒤 제출한다.
+    주의: 첫 인앱 상품은 API로 항목 추가가 안 된다(reviewSubmissionItems에 인앱 관계 없음).
+    웹의 앱 내 구입 상세에서 '심사에 추가 → 해당 초안'을 먼저 눌러 둬야 한다."""
     a = app()
     v = version(a["id"])
-    sub = call("POST", "/v1/reviewSubmissions", {"data": {"type": "reviewSubmissions", "attributes": {"platform": "IOS"},
-               "relationships": {"app": {"data": {"type": "apps", "id": a["id"]}}}}})["data"]
-    call("POST", "/v1/reviewSubmissionItems", {"data": {"type": "reviewSubmissionItems",
-         "relationships": {"reviewSubmission": {"data": {"type": "reviewSubmissions", "id": sub["id"]}},
-                           "appStoreVersion": {"data": {"type": "appStoreVersions", "id": v["id"]}}}}})
+    subs = call("GET", f"/v1/apps/{a['id']}/reviewSubmissions", params={"include": "items"})["data"]
+    drafts = [s for s in subs if s["attributes"]["state"] == "READY_FOR_REVIEW" and s["attributes"]["platform"] == "IOS"]
+    if drafts:
+        sub = drafts[0]
+        print("기존 초안 재사용:", sub["id"])
+    else:
+        sub = call("POST", "/v1/reviewSubmissions", {"data": {"type": "reviewSubmissions", "attributes": {"platform": "IOS"},
+                   "relationships": {"app": {"data": {"type": "apps", "id": a["id"]}}}}})["data"]
+    items = call("GET", f"/v1/reviewSubmissions/{sub['id']}/items", params={"include": "appStoreVersion"})
+    has_version = any(i["type"] == "appStoreVersions" and i["id"] == v["id"] for i in items.get("included", []))
+    if not has_version:
+        call("POST", "/v1/reviewSubmissionItems", {"data": {"type": "reviewSubmissionItems",
+             "relationships": {"reviewSubmission": {"data": {"type": "reviewSubmissions", "id": sub["id"]}},
+                               "appStoreVersion": {"data": {"type": "appStoreVersions", "id": v["id"]}}}}})
+        print("버전 항목 추가")
+    n = len(items["data"]) + (0 if has_version else 1)
+    if n < 2:
+        print("경고: 초안에 인앱 상품 항목이 없습니다. 웹에서 '심사에 추가'를 먼저 하세요. (항목 %d개)" % n)
     call("PATCH", f"/v1/reviewSubmissions/{sub['id']}", {"data": {"type": "reviewSubmissions", "id": sub["id"], "attributes": {"submitted": True}}})
     print("심사 제출 완료")
 
